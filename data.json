@@ -1210,11 +1210,11 @@
   "model": {
     "spring_range_m": 4.1,
     "neap_range_m": 1.7,
+    "reference": "HW Torquay",
     "slack_hours": [
       -2,
       4
     ],
-    "reference": "HW Torquay",
     "note": "Experimental RTYC race-tactics current model; not for navigation."
   }
 }

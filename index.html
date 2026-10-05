@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>RTYC Tor Bay Tidal Flow Viewer</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <style>
@@ -10,8 +10,7 @@
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.35 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
 header{background:var(--navy);color:#fff;padding:12px 16px;display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-h1{font-size:20px;margin:0}
-header .sub{font-size:12px;opacity:.8}
+h1{font-size:20px;margin:0}.sub{font-size:12px;opacity:.82}
 main{display:grid;grid-template-columns:330px 1fr;min-height:calc(100vh - 58px)}
 .controls{padding:12px;background:#eef2f6;border-right:1px solid var(--line)}
 .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px;margin-bottom:10px}
@@ -20,13 +19,10 @@ label{font-size:12px;font-weight:700;display:block;margin:0 0 4px}
 input,button{font:inherit}
 input[type=date],input[type=time]{width:100%;padding:8px;border:1px solid #b8c0cc;border-radius:7px;background:#fff}
 button{border:1px solid var(--blue);background:var(--blue);color:#fff;border-radius:8px;padding:9px 10px;font-weight:700;cursor:pointer}
-button.secondary{background:#fff;color:var(--blue)}
 .step{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px}
-.sliderWrap{margin-top:10px}
-input[type=range]{width:100%}
+.sliderWrap{margin-top:10px} input[type=range]{width:100%}
 .bigtime{font-size:21px;font-weight:800;margin-bottom:4px}
-.stat{display:flex;justify-content:space-between;gap:8px;padding:5px 0;border-bottom:1px solid #eee}
-.stat:last-child{border-bottom:0}
+.stat{display:flex;justify-content:space-between;gap:8px;padding:5px 0;border-bottom:1px solid #eee}.stat:last-child{border-bottom:0}
 .stat b{font-variant-numeric:tabular-nums}
 .note{font-size:12px;color:var(--muted);margin-top:7px}
 .status{font-size:12px;padding:8px;border-radius:7px;background:#f2f4f7;margin-top:8px}
@@ -35,11 +31,7 @@ input[type=range]{width:100%}
 .landmark{background:rgba(255,255,255,.85);border:0;white-space:nowrap;padding:2px 4px;border-radius:3px;color:#344054;font-size:11px;font-weight:700}
 .legend{position:absolute;right:12px;bottom:18px;z-index:800;background:rgba(255,255,255,.95);border:1px solid #bbb;border-radius:8px;padding:8px 10px;font-size:12px}
 .mapWrap{position:relative;min-width:0}
-@media(max-width:820px){
- main{display:block}
- .controls{border-right:0}
- #map{height:68vh;min-height:500px}
-}
+@media(max-width:820px){main{display:block}.controls{border-right:0}#map{height:68vh;min-height:500px}}
 </style>
 </head>
 <body>
@@ -55,8 +47,8 @@ input[type=range]{width:100%}
       <div><label for="time">Time</label><input id="time" type="time" step="60"></div>
     </div>
     <div class="step">
-      <button id="back">← 1 hour</button>
-      <button id="forward">1 hour →</button>
+      <button id="back" type="button">← 1 hour</button>
+      <button id="forward" type="button">1 hour →</button>
     </div>
     <div class="sliderWrap">
       <label for="slider">Move through time: <span id="sliderLabel">0 h</span></label>
@@ -67,11 +59,11 @@ input[type=range]{width:100%}
 
   <div class="card">
     <div id="displayTime" class="bigtime">—</div>
-    <div class="stat"><span>Nearest HW Torquay</span><b id="hw">—</b></div>
+    <div class="stat"><span>Nearest HW</span><b id="hw">—</b></div>
     <div class="stat"><span>Tidal stage</span><b id="stage">—</b></div>
     <div class="stat"><span>Tidal range</span><b id="range">—</b></div>
     <div class="stat"><span>Current scale</span><b id="scale">—</b></div>
-    <div id="status" class="status">Getting Torquay tide prediction…</div>
+    <div id="status" class="status">Getting tide prediction…</div>
   </div>
 
   <div class="card">
@@ -89,29 +81,24 @@ input[type=range]{width:100%}
 <script>
 const SPRING_RANGE=4.1, NEAP_RANGE=1.7;
 const TORQUAY={lat:50.4619,lon:-3.5253};
-let DATA=null, map=null, baseTime=null, selectedTime=null, tideData=null, arrows=[], markLayers={};
+let DATA=null,map=null,baseTime=null,selectedTime=null,tideData=null,arrows=[],markLayers={};
 
 const $=id=>document.getElementById(id);
 const pad=n=>String(n).padStart(2,'0');
-
 function setInputsFromDate(d){
   $('date').value=`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
   $('time').value=`${pad(d.getHours())}:${pad(d.getMinutes())}`;
 }
-function readInputs(){
-  return new Date(`${$('date').value}T${$('time').value||'12:00'}:00`);
-}
-function fmtDT(d){return d.toLocaleString('en-GB',{weekday:'short',day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'});}
-function fmtTime(d){return d.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});}
+function readInputs(){return new Date(`${$('date').value}T${$('time').value||'12:00'}:00`)}
+function fmtDT(d){return d.toLocaleString('en-GB',{weekday:'short',day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'})}
+function fmtTime(d){return d.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'})}
 function wrap360(x){x%=360;if(x<0)x+=360;return x}
 function compass(b){const a=['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'];return a[Math.round(b/22.5)%16]}
 function rangeFactor(r){return Math.max(.35,Math.min(1.15,.5+.5*(r-NEAP_RANGE)/(SPRING_RANGE-NEAP_RANGE)))}
 
 function initMap(){
   map=L.map('map').setView([50.447,-3.524],13);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
-    maxZoom:18,attribution:'&copy; OpenStreetMap contributors'
-  }).addTo(map);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18,attribution:'&copy; OpenStreetMap contributors'}).addTo(map);
   DATA.marks.forEach(m=>{
     const icon=L.divIcon({className:'mark-label',html:m.name,iconSize:[28,28],iconAnchor:[14,14]});
     markLayers[m.name]=L.marker([m.lat,m.lon],{icon}).addTo(map).bindPopup(`<b>Mark ${m.name}</b><br>Waiting for tide data…`);
@@ -126,37 +113,27 @@ function addLandmark(lat,lon,name){
   L.marker([lat,lon],{interactive:false,icon:L.divIcon({className:'landmark',html:name,iconAnchor:[0,0]})}).addTo(map);
 }
 
-/* OpenWaters response parser: deliberately tolerant of wrapper/schema differences. */
-function findEventArray(obj){
-  const arrays=[];
-  function walk(x){
-    if(Array.isArray(x)){
-      if(x.length && x.some(v=>v&&typeof v==='object')) arrays.push(x);
-      x.forEach(walk);
-    } else if(x&&typeof x==='object'){
-      Object.values(x).forEach(walk);
-    }
-  }
-  walk(obj);
-  let best=[];
-  for(const arr of arrays){
-    const mapped=arr.map(parseEvent).filter(Boolean);
-    if(mapped.length>best.length) best=mapped;
-  }
-  return best;
-}
+/* OpenWaters response parser.
+   Current schema: extremes:[{time,level,high:true/false,low:true/false,label:"High"/"Low"}] */
 function parseEvent(x){
-  if(!x||typeof x!=='object') return null;
-  const typeRaw=x.type??x.extremeType??x.tide??x.event??x.kind??x.name??x.state;
-  const timeRaw=x.time??x.dateTime??x.datetime??x.timestamp??x.date;
-  const heightRaw=x.height??x.value??x.level??x.waterLevel??x.water_level;
-  if(!typeRaw||!timeRaw) return null;
-  const type=String(typeRaw).toLowerCase();
-  const high=type.includes('high');
-  const low=type.includes('low');
-  if(!high&&!low) return null;
+  if(!x || typeof x!=='object') return null;
+  const timeRaw=x.time ?? x.dateTime ?? x.datetime ?? x.timestamp ?? x.date;
+  const heightRaw=x.level ?? x.height ?? x.value ?? x.waterLevel ?? x.water_level;
+  if(!timeRaw) return null;
+
+  let high = x.high === true;
+  let low = x.low === true;
+
+  const typeRaw=x.label ?? x.type ?? x.extremeType ?? x.tide ?? x.event ?? x.kind ?? x.name ?? x.state;
+  if(!high && !low && typeRaw){
+    const type=String(typeRaw).toLowerCase();
+    high=type.includes('high');
+    low=type.includes('low');
+  }
+  if(!high && !low) return null;
+
   const d=new Date(timeRaw);
-  if(isNaN(d)) return null;
+  if(Number.isNaN(d.getTime())) return null;
   const h=Number(heightRaw);
   return {type:high?'high':'low',time:d,height:Number.isFinite(h)?h:null};
 }
@@ -168,25 +145,38 @@ async function getTidesFor(d){
     +`?latitude=${TORQUAY.lat}&longitude=${TORQUAY.lon}`
     +`&start=${encodeURIComponent(start.toISOString())}`
     +`&end=${encodeURIComponent(end.toISOString())}&units=meters`;
-  $('status').textContent='Getting Torquay tide prediction…';
+
+  $('status').textContent='Getting tide prediction…';
   $('apiMini').textContent='OpenWaters tide data';
+
   try{
-    const r=await fetch(url);
+    const r=await fetch(url,{mode:'cors'});
     if(!r.ok) throw new Error(`HTTP ${r.status}`);
     const j=await r.json();
-    const events=findEventArray(j).sort((a,b)=>a.time-b.time);
+
+    const raw=Array.isArray(j.extremes)?j.extremes:[];
+    const events=raw.map(parseEvent).filter(Boolean).sort((a,b)=>a.time-b.time);
     if(events.filter(e=>e.type==='high').length<2) throw new Error('No usable high-water events returned');
-    tideData={events,loadedFor:new Date(d)};
-    $('status').textContent='Torquay tide prediction loaded.';
+
+    tideData={events,loadedFor:new Date(d),station:j.station||{},distance:Number(j.distance)};
+    const stationId=String(tideData.station.id||'');
+    const stationName=stationId.includes('teignmouth')
+      ? 'Teignmouth Pier harmonic station'
+      : (tideData.station.name || 'nearest harmonic station');
+
+    $('status').textContent=`Tide prediction loaded from ${stationName}${Number.isFinite(tideData.distance)?` (${tideData.distance.toFixed(1)} km from Torquay query point)`:''}.`;
+    $('apiMini').textContent='Tide service connected';
     render();
   }catch(err){
+    console.error('Tide lookup failed:',err);
     tideData=null;
-    $('status').textContent='Tide service unavailable — reload the page or try again shortly.';
-    $('apiMini').textContent='Tide service unavailable';
+    $('status').textContent=`Tide lookup failed: ${err.message}`;
+    $('apiMini').textContent='Tide service error';
     clearArrows();
     $('hw').textContent=$('stage').textContent=$('range').textContent=$('scale').textContent='—';
   }
 }
+
 function nearestHigh(d){
   const hs=tideData.events.filter(e=>e.type==='high');
   return hs.reduce((a,b)=>Math.abs(b.time-d)<Math.abs(a.time-d)?b:a);
@@ -196,9 +186,9 @@ function rangeAround(high){
   const prev=lows.filter(e=>e.time<high.time).sort((a,b)=>b.time-a.time)[0];
   const next=lows.filter(e=>e.time>high.time).sort((a,b)=>a.time-b.time)[0];
   const vals=[];
-  if(prev&&high.height!=null&&prev.height!=null) vals.push(Math.abs(high.height-prev.height));
-  if(next&&high.height!=null&&next.height!=null) vals.push(Math.abs(high.height-next.height));
-  return vals.length?vals.reduce((a,b)=>a+b,0)/vals.length:3.0;
+  if(prev && high.height!=null && prev.height!=null) vals.push(Math.abs(high.height-prev.height));
+  if(next && high.height!=null && next.height!=null) vals.push(Math.abs(high.height-next.height));
+  return vals.length ? vals.reduce((a,b)=>a+b,0)/vals.length : 3.0;
 }
 function foldedHWOffset(d,hw){
   let h=(d-hw.time)/3600e3;
@@ -209,9 +199,9 @@ function foldedHWOffset(d,hw){
 function vector(mark,h,scale){
   h=Math.max(-6,Math.min(6,h));
   const lo=Math.floor(h),hi=Math.ceil(h),f=h-lo;
-  const row=stage=>DATA.vectors.find(v=>v.mark===mark.name&&v.hw_offset===stage);
+  const row=stage=>DATA.vectors.find(v=>v.mark===mark.name && v.hw_offset===stage);
   const uv=r=>{
-    if(!r||r.bearing==null||r.spring_knots===0) return [0,0];
+    if(!r || r.bearing==null || r.spring_knots===0) return [0,0];
     const a=r.bearing*Math.PI/180;
     return [r.spring_knots*Math.sin(a),r.spring_knots*Math.cos(a)];
   };
@@ -230,7 +220,7 @@ function dest(lat,lon,bearing,distNM){
 }
 function clearArrows(){arrows.forEach(x=>map.removeLayer(x));arrows=[]}
 function drawArrow(m,v){
-  if(v.speed<.01||v.bearing==null)return;
+  if(v.speed<.01 || v.bearing==null)return;
   const len=.42*v.speed;
   const e=dest(m.lat,m.lon,v.bearing,len);
   arrows.push(L.polyline([[m.lat,m.lon],e],{color:'#0b5cab',weight:4,opacity:.9}).addTo(map));
@@ -238,58 +228,88 @@ function drawArrow(m,v){
   const h1=dest(e[0],e[1],v.bearing+155,hl),h2=dest(e[0],e[1],v.bearing-155,hl);
   arrows.push(L.polyline([h1,e,h2],{color:'#0b5cab',weight:4,opacity:.9}).addTo(map));
 }
-
 function render(){
   $('displayTime').textContent=fmtDT(selectedTime);
   if(!tideData)return;
+
   const hw=nearestHigh(selectedTime);
   const rr=rangeAround(hw);
   const sf=rangeFactor(rr);
   const rel=foldedHWOffset(selectedTime,hw);
+
   $('hw').textContent=fmtTime(hw.time);
   $('stage').textContent=`HW ${rel>=0?'+':''}${rel.toFixed(1)} h`;
   $('range').textContent=`${rr.toFixed(2)} m`;
   $('scale').textContent=`${sf.toFixed(2)}×`;
+
   clearArrows();
   DATA.marks.forEach(m=>{
     const v=vector(m,rel,sf);
     drawArrow(m,v);
-    const txt=v.speed<.01?'Very weak / slack':`${v.speed.toFixed(2)} kt @ ${String(Math.round(v.bearing)).padStart(3,'0')}°T (${compass(v.bearing)})`;
+    const txt=v.speed<.01
+      ? 'Very weak / slack'
+      : `${v.speed.toFixed(2)} kt @ ${String(Math.round(v.bearing)).padStart(3,'0')}°T (${compass(v.bearing)})`;
     markLayers[m.name].setPopupContent(`<b>Mark ${m.name}</b><br>${txt}`);
   });
 }
 
-async function setSelected(d,resetBase=false){
-  selectedTime=new Date(d);
-  if(resetBase){baseTime=new Date(d);$('slider').value=0;$('sliderLabel').textContent='0 h';}
-  setInputsFromDate(selectedTime);
-  $('displayTime').textContent=fmtDT(selectedTime);
-  if(!tideData||Math.abs(selectedTime-tideData.loadedFor)>24*3600e3) await getTidesFor(selectedTime);
-  else render();
-}
-
 async function boot(){
-  DATA=await fetch('data.json').then(r=>r.json());
+  DATA=await fetch('./data.json',{cache:'no-store'}).then(r=>{
+    if(!r.ok) throw new Error(`data.json HTTP ${r.status}`);
+    return r.json();
+  });
+
   initMap();
+
   const now=new Date();
   now.setMinutes(Math.round(now.getMinutes()/15)*15,0,0);
-  baseTime=new Date(now);selectedTime=new Date(now);setInputsFromDate(now);
+  baseTime=new Date(now);
+  selectedTime=new Date(now);
+  setInputsFromDate(now);
+
   $('slider').addEventListener('input',()=>{
     const off=Number($('slider').value);
     $('sliderLabel').textContent=`${off>=0?'+':''}${off} h`;
     selectedTime=new Date(baseTime.getTime()+off*3600e3);
     setInputsFromDate(selectedTime);
     render();
-    if(!tideData||Math.abs(selectedTime-tideData.loadedFor)>24*3600e3)getTidesFor(selectedTime);
+    if(!tideData || Math.abs(selectedTime-tideData.loadedFor)>24*3600e3) getTidesFor(selectedTime);
   });
-  const typed=()=>{baseTime=readInputs();selectedTime=new Date(baseTime);$('slider').value=0;$('sliderLabel').textContent='0 h';getTidesFor(selectedTime);};
+
+  const typed=()=>{
+    baseTime=readInputs();
+    selectedTime=new Date(baseTime);
+    $('slider').value=0;
+    $('sliderLabel').textContent='0 h';
+    getTidesFor(selectedTime);
+  };
   $('date').addEventListener('change',typed);
   $('time').addEventListener('change',typed);
-  $('back').addEventListener('click',()=>{selectedTime=new Date(selectedTime.getTime()-3600e3);baseTime=new Date(selectedTime);$('slider').value=0;$('sliderLabel').textContent='0 h';setInputsFromDate(selectedTime);getTidesFor(selectedTime);});
-  $('forward').addEventListener('click',()=>{selectedTime=new Date(selectedTime.getTime()+3600e3);baseTime=new Date(selectedTime);$('slider').value=0;$('sliderLabel').textContent='0 h';setInputsFromDate(selectedTime);getTidesFor(selectedTime);});
+
+  $('back').addEventListener('click',()=>{
+    selectedTime=new Date(selectedTime.getTime()-3600e3);
+    baseTime=new Date(selectedTime);
+    $('slider').value=0;
+    $('sliderLabel').textContent='0 h';
+    setInputsFromDate(selectedTime);
+    getTidesFor(selectedTime);
+  });
+  $('forward').addEventListener('click',()=>{
+    selectedTime=new Date(selectedTime.getTime()+3600e3);
+    baseTime=new Date(selectedTime);
+    $('slider').value=0;
+    $('sliderLabel').textContent='0 h';
+    setInputsFromDate(selectedTime);
+    getTidesFor(selectedTime);
+  });
+
   await getTidesFor(now);
 }
-boot();
+boot().catch(err=>{
+  console.error('Viewer startup failed:',err);
+  $('status').textContent=`Viewer startup failed: ${err.message}`;
+  $('apiMini').textContent='Startup error';
+});
 </script>
 </body>
 </html>
