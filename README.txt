@@ -1,26 +1,9 @@
-RTYC Tor Bay Tidal Flow Viewer
+RTYC Tor Bay Tidal Flow Viewer v0.3
 
-FILES TO UPLOAD TO GITHUB PAGES
-- index.html
-- data.json
-
-Nothing else is required.
-
-GitHub Pages:
-1. Create a public repository.
-2. Upload index.html and data.json into the repository root.
-3. Settings > Pages.
-4. Deploy from branch: main / root.
-5. Open the github.io URL.
-
-The viewer obtains Torquay high/low-water predictions at runtime from the free
-OpenWaters tides API (no user API key required) and uses the predicted tidal
-range to scale the RTYC current model.
-
-Internet access is required for:
-- the base map tiles
-- tide prediction lookup
-
-The flow-vector model itself is stored locally in data.json.
-
-This is an experimental race-tactics model and must not be used for navigation.
+Changes from v0.2:
+- Current arrows changed to red.
+- Arrow display length doubled (thickness unchanged).
+- R and G shoreline-alignment tweak:
+  - G bearings adjusted to 300° / 120°
+  - R bearings adjusted to 295° / 115°
+These are heuristic nearshore direction tweaks, not measured local current data.

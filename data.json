@@ -5,16 +5,16 @@
       "lat": 50.45483333333333,
       "lon": -3.5286666666666666,
       "peak": 0.32,
-      "north": 340,
-      "south": 200
+      "north": 300,
+      "south": 120
     },
     {
       "name": "R",
       "lat": 50.454166666666666,
       "lon": -3.523833333333333,
       "peak": 0.34,
-      "north": 342,
-      "south": 198
+      "north": 295,
+      "south": 115
     },
     {
       "name": "1",
@@ -117,25 +117,25 @@
     {
       "mark": "G",
       "hw_offset": -6,
-      "bearing": 200,
+      "bearing": 120,
       "spring_knots": 0.277
     },
     {
       "mark": "G",
       "hw_offset": -5,
-      "bearing": 200,
+      "bearing": 120,
       "spring_knots": 0.32
     },
     {
       "mark": "G",
       "hw_offset": -4,
-      "bearing": 200,
+      "bearing": 120,
       "spring_knots": 0.277
     },
     {
       "mark": "G",
       "hw_offset": -3,
-      "bearing": 200,
+      "bearing": 120,
       "spring_knots": 0.16
     },
     {
@@ -147,31 +147,31 @@
     {
       "mark": "G",
       "hw_offset": -1,
-      "bearing": 340,
+      "bearing": 300,
       "spring_knots": 0.16
     },
     {
       "mark": "G",
       "hw_offset": 0,
-      "bearing": 340,
+      "bearing": 300,
       "spring_knots": 0.277
     },
     {
       "mark": "G",
       "hw_offset": 1,
-      "bearing": 340,
+      "bearing": 300,
       "spring_knots": 0.32
     },
     {
       "mark": "G",
       "hw_offset": 2,
-      "bearing": 340,
+      "bearing": 300,
       "spring_knots": 0.277
     },
     {
       "mark": "G",
       "hw_offset": 3,
-      "bearing": 340,
+      "bearing": 300,
       "spring_knots": 0.16
     },
     {
@@ -183,37 +183,37 @@
     {
       "mark": "G",
       "hw_offset": 5,
-      "bearing": 200,
+      "bearing": 120,
       "spring_knots": 0.16
     },
     {
       "mark": "G",
       "hw_offset": 6,
-      "bearing": 200,
+      "bearing": 120,
       "spring_knots": 0.277
     },
     {
       "mark": "R",
       "hw_offset": -6,
-      "bearing": 198,
+      "bearing": 115,
       "spring_knots": 0.294
     },
     {
       "mark": "R",
       "hw_offset": -5,
-      "bearing": 198,
+      "bearing": 115,
       "spring_knots": 0.34
     },
     {
       "mark": "R",
       "hw_offset": -4,
-      "bearing": 198,
+      "bearing": 115,
       "spring_knots": 0.294
     },
     {
       "mark": "R",
       "hw_offset": -3,
-      "bearing": 198,
+      "bearing": 115,
       "spring_knots": 0.17
     },
     {
@@ -225,31 +225,31 @@
     {
       "mark": "R",
       "hw_offset": -1,
-      "bearing": 342,
+      "bearing": 295,
       "spring_knots": 0.17
     },
     {
       "mark": "R",
       "hw_offset": 0,
-      "bearing": 342,
+      "bearing": 295,
       "spring_knots": 0.294
     },
     {
       "mark": "R",
       "hw_offset": 1,
-      "bearing": 342,
+      "bearing": 295,
       "spring_knots": 0.34
     },
     {
       "mark": "R",
       "hw_offset": 2,
-      "bearing": 342,
+      "bearing": 295,
       "spring_knots": 0.294
     },
     {
       "mark": "R",
       "hw_offset": 3,
-      "bearing": 342,
+      "bearing": 295,
       "spring_knots": 0.17
     },
     {
@@ -261,13 +261,13 @@
     {
       "mark": "R",
       "hw_offset": 5,
-      "bearing": 198,
+      "bearing": 115,
       "spring_knots": 0.17
     },
     {
       "mark": "R",
       "hw_offset": 6,
-      "bearing": 198,
+      "bearing": 115,
       "spring_knots": 0.294
     },
     {

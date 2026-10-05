@@ -73,7 +73,7 @@ button{border:1px solid var(--blue);background:var(--blue);color:#fff;border-rad
 
 <section class="mapWrap">
   <div id="map"></div>
-  <div class="legend"><b>Predicted flow</b><br>Arrow = set direction<br>Length = relative speed<br><span style="color:#667085">Not for navigation</span></div>
+  <div class="legend"><b>Predicted flow</b><br>Arrow = set direction<br>Length = relative speed (2× display scale)<br><span style="color:#667085">Not for navigation</span></div>
 </section>
 </main>
 
@@ -221,12 +221,12 @@ function dest(lat,lon,bearing,distNM){
 function clearArrows(){arrows.forEach(x=>map.removeLayer(x));arrows=[]}
 function drawArrow(m,v){
   if(v.speed<.01 || v.bearing==null)return;
-  const len=.42*v.speed;
+  const len=.84*v.speed;
   const e=dest(m.lat,m.lon,v.bearing,len);
-  arrows.push(L.polyline([[m.lat,m.lon],e],{color:'#0b5cab',weight:4,opacity:.9}).addTo(map));
+  arrows.push(L.polyline([[m.lat,m.lon],e],{color:'#d92d20',weight:4,opacity:.9}).addTo(map));
   const hl=Math.min(.05,Math.max(.018,len*.25));
   const h1=dest(e[0],e[1],v.bearing+155,hl),h2=dest(e[0],e[1],v.bearing-155,hl);
-  arrows.push(L.polyline([h1,e,h2],{color:'#0b5cab',weight:4,opacity:.9}).addTo(map));
+  arrows.push(L.polyline([h1,e,h2],{color:'#d92d20',weight:4,opacity:.9}).addTo(map));
 }
 function render(){
   $('displayTime').textContent=fmtDT(selectedTime);
