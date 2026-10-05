@@ -1,193 +1,31 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>RTYC Tor Bay Tidal Flow Viewer</title>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RTYC Tor Bay Tidal Flow Viewer</title><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <style>
-:root{--navy:#0b2744;--blue:#0b5cab;--bg:#f4f6f8;--card:#fff;--line:#d0d5dd;--muted:#667085;--ink:#182230}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.35 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
-header{background:var(--navy);color:#fff;padding:12px 16px;display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-h1{font-size:20px;margin:0} .sub{font-size:12px;opacity:.86} .version{font-size:12px;background:rgba(255,255,255,.14);padding:4px 8px;border-radius:999px}
-main{display:grid;grid-template-columns:345px 1fr;min-height:calc(100vh - 58px)}
-.controls{padding:12px;background:#eef2f6;border-right:1px solid var(--line)}
-.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px;margin-bottom:10px}
-label{font-size:12px;font-weight:700;display:block;margin:0 0 4px}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-input,button{font:inherit} input[type=date],input[type=time]{width:100%;padding:8px;border:1px solid #b8c0cc;border-radius:7px;background:#fff}
-button{border:1px solid var(--blue);background:var(--blue);color:#fff;border-radius:8px;padding:9px 10px;font-weight:700;cursor:pointer}
-.step{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px}
-.sliderWrap{margin-top:10px} input[type=range]{width:100%}
-.bigtime{font-size:21px;font-weight:800;margin-bottom:4px}
-.stat{display:flex;justify-content:space-between;gap:8px;padding:5px 0;border-bottom:1px solid #eee} .stat:last-child{border-bottom:0}
-.stat b{font-variant-numeric:tabular-nums}
-.note{font-size:12px;color:var(--muted);margin-top:7px}
-.status{font-size:12px;padding:8px;border-radius:7px;background:#f2f4f7;margin-top:8px}
-.toggleRow{display:flex;align-items:center;gap:8px;margin:8px 0} .toggleRow input{width:16px;height:16px}
-#map{height:calc(100vh - 58px);min-height:650px;background:#d9e8ef}
-.mark-label{background:#fff;border:2px solid #173f5f;border-radius:50%;width:28px!important;height:28px!important;line-height:24px;text-align:center;font-weight:800;color:#173f5f;box-shadow:0 1px 3px rgba(0,0,0,.25)}
-.legend{position:absolute;right:12px;bottom:18px;z-index:800;background:rgba(255,255,255,.95);border:1px solid #bbb;border-radius:8px;padding:8px 10px;font-size:12px;max-width:240px}
-.mapWrap{position:relative;min-width:0}
-@media(max-width:820px){main{display:block}.controls{border-right:0}#map{height:68vh;min-height:500px}}
-</style>
-</head>
-<body>
-<header>
-  <div><h1>RTYC Tor Bay Tidal Flow Viewer</h1><div class="sub">Experimental % current model • reference: HW Torquay • clean bathymetry background</div></div>
-  <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><div class="version" id="versionTag">v0.7.0</div><div id="apiMini" class="sub">Loading tide service…</div></div>
-</header>
-<main>
-<section class="controls">
-  <div class="card">
-    <div class="row">
-      <div><label for="date">Date</label><input id="date" type="date"></div>
-      <div><label for="time">Time</label><input id="time" type="time" step="60"></div>
-    </div>
-    <div class="step">
-      <button id="back" type="button">← 1 hour</button>
-      <button id="forward" type="button">1 hour →</button>
-    </div>
-    <div class="sliderWrap">
-      <label for="slider">Move through time: <span id="sliderLabel">0 h</span></label>
-      <input id="slider" type="range" min="-6" max="6" value="0" step="0.25">
-      <div class="note">Slider spans ±6 hours from the date/time entered above.</div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div id="displayTime" class="bigtime">—</div>
-    <div class="stat"><span>Nearest HW</span><b id="hw">—</b></div>
-    <div class="stat"><span>Tidal stage</span><b id="stage">—</b></div>
-    <div class="stat"><span>Tidal range</span><b id="range">—</b></div>
-    <div class="stat"><span>Range scale</span><b id="scale">—</b></div>
-    <div id="status" class="status">Getting tide prediction…</div>
-  </div>
-
-  <div class="card">
-    <label>Display options</label>
-    <div class="toggleRow"><input id="toggleBuoy" type="checkbox" checked><span>Show RTYC buoy arrows</span></div>
-    <div class="toggleRow"><input id="toggleBg" type="checkbox" checked><span>Show faint background % arrows</span></div>
-    <div class="note">Buoy arrows use the RTYC mark model. Background arrows show the wider Tor Bay % velocity field.</div>
-  </div>
-
-  <div class="card">
-    <div class="note"><b>How to read it:</b> 100% means the deep-water reference flow outside the Berry Head–Hope's Nose line. Red arrows at the marks show the predicted set at each buoy. Faint background arrows show the wider % velocity pattern. The clean background shows the 5 m, 10 m, 15 m and 20 m depth contours without other map clutter.</div>
-  </div>
-</section>
-
-<section class="mapWrap">
-  <div id="map"></div>
-  <div class="legend"><b>Predicted flow</b><br>Red buoy arrows = RTYC mark model<br>Faint arrows = wider Tor Bay % model<br>Arrow length = % of offshore reference flow<br>Background contours = 5 m, 10 m, 15 m, 20 m<br><span style="color:#667085">100% = deep water outside Berry Head–Hope's Nose line<br>Viewer v0.7.0 • Not for navigation</span></div>
-</section>
-</main>
-
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script>
-const VERSION = 'v0.7.0';
-const SPRING_RANGE=4.1, NEAP_RANGE=1.7;
-const TORQUAY={lat:50.4619,lon:-3.5253};
-let DATA=null,map=null,baseTime=null,selectedTime=null,tideData=null,markArrowLayers=[],bgArrowLayers=[],markLayers={},backgroundOverlay=null;
-const $=id=>document.getElementById(id);
-const pad=n=>String(n).padStart(2,'0');
-function setInputsFromDate(d){$('date').value=`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`; $('time').value=`${pad(d.getHours())}:${pad(d.getMinutes())}`;}
-function readInputs(){return new Date(`${$('date').value}T${$('time').value||'12:00'}:00`)}
-function fmtDT(d){return d.toLocaleString('en-GB',{weekday:'short',day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'})}
-function fmtTime(d){return d.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'})}
-function wrap360(x){x%=360;if(x<0)x+=360;return x}
-function compass(b){const a=['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'];return a[Math.round(b/22.5)%16]}
-function rangeFactor(r){return Math.max(.35,Math.min(1.15,.5+.5*(r-NEAP_RANGE)/(SPRING_RANGE-NEAP_RANGE)))}
-
-function initMap(){
-  const b = DATA.model.image_bounds;
-  map=L.map('map',{zoomSnap:0.25, minZoom:11.5, maxZoom:15});
-  backgroundOverlay = L.imageOverlay('./background.png', b, {interactive:false, opacity:1}).addTo(map);
-  map.fitBounds(b, {padding:[10,10]});
-  DATA.marks.forEach(m=>{
-    const icon=L.divIcon({className:'mark-label',html:m.name,iconSize:[28,28],iconAnchor:[14,14]});
-    markLayers[m.name]=L.marker([m.lat,m.lon],{icon}).addTo(map).bindPopup(`<b>Mark ${m.name}</b><br>Waiting for tide data…<br><span style="color:#667085">Model version v0.7.0</span>`);
-  });
-}
-
-function parseEvent(x){
-  if(!x || typeof x!=='object') return null;
-  const timeRaw=x.time ?? x.dateTime ?? x.datetime ?? x.timestamp ?? x.date;
-  const heightRaw=x.level ?? x.height ?? x.value ?? x.waterLevel ?? x.water_level;
-  if(!timeRaw) return null;
-  let high = x.high === true, low = x.low === true;
-  const typeRaw=x.label ?? x.type ?? x.extremeType ?? x.tide ?? x.event ?? x.kind ?? x.name ?? x.state;
-  if(!high && !low && typeRaw){ const type=String(typeRaw).toLowerCase(); high=type.includes('high'); low=type.includes('low'); }
-  if(!high && !low) return null;
-  const d=new Date(timeRaw); if(Number.isNaN(d.getTime())) return null;
-  const h=Number(heightRaw); return {type:high?'high':'low',time:d,height:Number.isFinite(h)?h:null};
-}
-
-async function getTidesFor(d){
-  const start=new Date(d.getTime()-36*3600e3), end=new Date(d.getTime()+36*3600e3);
-  const url='https://api.openwaters.io/tides/extremes'+`?latitude=${TORQUAY.lat}&longitude=${TORQUAY.lon}`+`&start=${encodeURIComponent(start.toISOString())}`+`&end=${encodeURIComponent(end.toISOString())}&units=meters`;
-  $('status').textContent='Getting tide prediction…'; $('apiMini').textContent='OpenWaters tide data';
-  try{
-    const r=await fetch(url,{mode:'cors'}); if(!r.ok) throw new Error(`HTTP ${r.status}`);
-    const j=await r.json();
-    const raw=Array.isArray(j.extremes)?j.extremes:[];
-    const events=raw.map(parseEvent).filter(Boolean).sort((a,b)=>a.time-b.time);
-    if(events.filter(e=>e.type==='high').length<2) throw new Error('No usable high-water events returned');
-    tideData={events,loadedFor:new Date(d),station:j.station||{},distance:Number(j.distance)};
-    const stationName=tideData.station.name || 'nearest harmonic station';
-    $('status').textContent=`Tide prediction loaded from ${stationName}${Number.isFinite(tideData.distance)?` (${tideData.distance.toFixed(1)} km from Torquay query point)`:''}.`;
-    $('apiMini').textContent=`Tide service connected • ${VERSION}`;
-    render();
-  }catch(err){
-    console.error('Tide lookup failed:',err); tideData=null; $('status').textContent=`Tide lookup failed: ${err.message}`; $('apiMini').textContent='Tide service error'; clearArrows(); $('hw').textContent=$('stage').textContent=$('range').textContent=$('scale').textContent='—';
-  }
-}
-
-function nearestHigh(d){const hs=tideData.events.filter(e=>e.type==='high'); return hs.reduce((a,b)=>Math.abs(b.time-d)<Math.abs(a.time-d)?b:a);}
-function rangeAround(high){ const lows=tideData.events.filter(e=>e.type==='low'); const prev=lows.filter(e=>e.time<high.time).sort((a,b)=>b.time-a.time)[0]; const next=lows.filter(e=>e.time>high.time).sort((a,b)=>a.time-b.time)[0]; const vals=[]; if(prev&&high.height!=null&&prev.height!=null) vals.push(Math.abs(high.height-prev.height)); if(next&&high.height!=null&&next.height!=null) vals.push(Math.abs(high.height-next.height)); return vals.length?vals.reduce((a,b)=>a+b,0)/vals.length:3.0; }
-function foldedHWOffset(d,hw){ let h=(d-hw.time)/3600e3; while(h>6.21)h-=12.42; while(h<-6.21)h+=12.42; return h; }
-function vector(mark,h,scale){
-  h=Math.max(-6,Math.min(6,h)); const lo=Math.floor(h), hi=Math.ceil(h), f=h-lo;
-  const row=stage=>DATA.vectors.find(v=>v.mark===mark.name && v.hw_offset===stage);
-  const uv=r=>{ if(!r || r.bearing==null || r.spring_knots===0) return [0,0]; const a=r.bearing*Math.PI/180; return [r.spring_knots*Math.sin(a),r.spring_knots*Math.cos(a)]; };
-  const a=uv(row(lo)), b=uv(row(hi)); const u=(a[0]+(b[0]-a[0])*f)*scale; const v=(a[1]+(b[1]-a[1])*f)*scale; const s=Math.hypot(u,v); if(s<.01) return {speed:0,bearing:null}; return {speed:s,bearing:wrap360(Math.atan2(u,v)*180/Math.PI)};
-}
-function bgVector(item,h,scale){
-  h=Math.round(Math.max(-6,Math.min(6,h)));
-  if(h===-2 || h===4 || item.peak===0) return {speed:0,bearing:null};
-  const floodish = [-1,0,1,2,3].includes(h);
-  const bearing = floodish ? item.flood : item.ebb;
-  const speed = item.peak * (DATA.model.phase_pattern[String(h)] ?? DATA.model.phase_pattern[h] ?? 0) * scale;
-  if(!bearing || speed<.01) return {speed:0,bearing:null};
-  return {speed,bearing};
-}
-function dest(lat,lon,bearing,distNM){ const R=3440.065,d=distNM/R,br=bearing*Math.PI/180,p1=lat*Math.PI/180,l1=lon*Math.PI/180; const p2=Math.asin(Math.sin(p1)*Math.cos(d)+Math.cos(p1)*Math.sin(d)*Math.cos(br)); const l2=l1+Math.atan2(Math.sin(br)*Math.sin(d)*Math.cos(p1),Math.cos(d)-Math.sin(p1)*Math.sin(p2)); return [p2*180/Math.PI,l2*180/Math.PI]; }
-function clearArrows(){ markArrowLayers.forEach(x=>map.removeLayer(x)); bgArrowLayers.forEach(x=>map.removeLayer(x)); markArrowLayers=[]; bgArrowLayers=[]; }
-function drawArrow(lat,lon,v,style,store){ if(v.speed<.01 || v.bearing==null) return; const len=style.mult*v.speed; const e=dest(lat,lon,v.bearing,len); store.push(L.polyline([[lat,lon],e],{color:style.color,weight:style.weight,opacity:style.opacity}).addTo(map)); const hl=Math.min(style.headMax,Math.max(style.headMin,len*.25)); const h1=dest(e[0],e[1],v.bearing+155,hl), h2=dest(e[0],e[1],v.bearing-155,hl); store.push(L.polyline([h1,e,h2],{color:style.color,weight:style.weight,opacity:style.opacity}).addTo(map)); }
-function render(){
-  $('displayTime').textContent=fmtDT(selectedTime); if(!tideData) return;
-  const hw=nearestHigh(selectedTime), rr=rangeAround(hw), sf=rangeFactor(rr), rel=foldedHWOffset(selectedTime,hw);
-  $('hw').textContent=fmtTime(hw.time); $('stage').textContent=`HW ${rel>=0?'+':''}${rel.toFixed(1)} h`; $('range').textContent=`${rr.toFixed(2)} m`; $('scale').textContent=`${sf.toFixed(2)}×`;
-  clearArrows();
-  const showBuoy=$('toggleBuoy').checked, showBg=$('toggleBg').checked;
-  if(showBg){ DATA.background.forEach(item=>{ const v=bgVector(item,rel,sf); drawArrow(item.lat,item.lon,v,{mult:.62,color:'#cf6b5b',weight:2,opacity:.38,headMin:.010,headMax:.028},bgArrowLayers); }); }
-  DATA.marks.forEach(m=>{ const v=vector(m,rel,sf); if(showBuoy) drawArrow(m.lat,m.lon,v,{mult:.84,color:'#d92d20',weight:4,opacity:.92,headMin:.018,headMax:.050},markArrowLayers); const pct=(v.speed*100).toFixed(0); const txt=v.speed<.01 ? 'Very weak / slack' : `${pct}% of offshore reference @ ${String(Math.round(v.bearing)).padStart(3,'0')}°T (${compass(v.bearing)})`; const eq=(v.speed).toFixed(2); markLayers[m.name].setPopupContent(`<b>Mark ${m.name}</b><br>${txt}<br><span style="color:#667085">Equivalent to ${eq} kt if offshore reference = 1.00 kt</span><br><span style="color:#667085">Depth zone basis: ${m.depth_m ?? '—'} m, model v0.7.0</span>`); });
-}
-
-async function boot(){
-  DATA=await fetch('./data.json',{cache:'no-store'}).then(r=>{ if(!r.ok) throw new Error(`data.json HTTP ${r.status}`); return r.json(); });
-  if(DATA.model?.version) $('versionTag').textContent = DATA.model.version;
-  initMap();
-  const now=new Date(); now.setMinutes(Math.round(now.getMinutes()/15)*15,0,0); baseTime=new Date(now); selectedTime=new Date(now); setInputsFromDate(now);
-  $('toggleBuoy').addEventListener('change',render); $('toggleBg').addEventListener('change',render);
-  $('slider').addEventListener('input',()=>{ const off=Number($('slider').value); $('sliderLabel').textContent=`${off>=0?'+':''}${off} h`; selectedTime=new Date(baseTime.getTime()+off*3600e3); setInputsFromDate(selectedTime); render(); if(!tideData || Math.abs(selectedTime-tideData.loadedFor)>24*3600e3) getTidesFor(selectedTime); });
-  const typed=()=>{ baseTime=readInputs(); selectedTime=new Date(baseTime); $('slider').value=0; $('sliderLabel').textContent='0 h'; getTidesFor(selectedTime); };
-  $('date').addEventListener('change',typed); $('time').addEventListener('change',typed);
-  $('back').addEventListener('click',()=>{ selectedTime=new Date(selectedTime.getTime()-3600e3); baseTime=new Date(selectedTime); $('slider').value=0; $('sliderLabel').textContent='0 h'; setInputsFromDate(selectedTime); getTidesFor(selectedTime); });
-  $('forward').addEventListener('click',()=>{ selectedTime=new Date(selectedTime.getTime()+3600e3); baseTime=new Date(selectedTime); $('slider').value=0; $('sliderLabel').textContent='0 h'; setInputsFromDate(selectedTime); getTidesFor(selectedTime); });
-  await getTidesFor(now);
-}
-boot().catch(err=>{ console.error('Viewer startup failed:',err); $('status').textContent=`Viewer startup failed: ${err.message}`; $('apiMini').textContent='Startup error'; });
-</script>
-</body>
-</html>
+:root{--navy:#0b2744;--blue:#0b5cab;--bg:#f4f6f8;--card:#fff;--line:#d0d5dd;--muted:#667085;--ink:#182230}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.35 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}header{background:var(--navy);color:#fff;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}h1{font-size:20px;margin:0}.sub{font-size:12px;opacity:.85}.badge{background:#fff;color:#0b2744;border-radius:999px;padding:4px 9px;font-weight:800;font-size:12px}.wrap{display:grid;grid-template-columns:345px 1fr;min-height:calc(100vh - 58px)}.controls{padding:12px;background:#eef2f6;border-right:1px solid var(--line)}.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px;margin-bottom:10px}.row{display:grid;grid-template-columns:1fr 1fr;gap:8px}label{font-size:12px;font-weight:700;display:block;margin-bottom:4px}input,button{font:inherit}input[type=date],input[type=time]{width:100%;padding:8px;border:1px solid #b8c0cc;border-radius:7px;background:#fff}button{border:1px solid var(--blue);background:var(--blue);color:#fff;border-radius:8px;padding:9px 10px;font-weight:700;cursor:pointer}.step{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px}.sliderWrap{margin-top:10px}.sliderWrap input{width:100%}.bigtime{font-size:21px;font-weight:800;margin-bottom:4px}.stat{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #eee}.note{font-size:12px;color:var(--muted);margin-top:7px}.status{font-size:12px;padding:8px;border-radius:7px;background:#f2f4f7;margin-top:8px}.toggleRow{display:flex;align-items:center;gap:8px;margin:8px 0}.mapWrap{position:relative;min-width:0}#map{height:calc(100vh - 58px);min-height:650px;background:#e8edf2}.mark-label{background:#fff;border:2px solid #173f5f;border-radius:50%;width:28px!important;height:28px!important;line-height:24px;text-align:center;font-weight:800;color:#173f5f;box-shadow:0 1px 3px rgba(0,0,0,.25)}.legend{position:absolute;right:12px;bottom:18px;z-index:800;background:rgba(255,255,255,.95);border:1px solid #bbb;border-radius:8px;padding:8px 10px;font-size:12px;max-width:260px}.live{position:absolute;left:12px;top:12px;z-index:900;background:#0b2744;color:#fff;padding:6px 10px;border-radius:8px;font-weight:800;font-size:13px}@media(max-width:820px){.wrap{display:block}.controls{border-right:0}#map{height:68vh;min-height:500px}}
+</style></head><body>
+<header><div><h1>RTYC Tor Bay Tidal Flow Viewer</h1><div class="sub">Single-field % current model • curved bay flow + offshore axis forcing</div></div><div style="display:flex;gap:10px;align-items:center"><span class="badge">v0.7.2</span><span id="apiMini" class="sub">Loading tide service…</span></div></header>
+<div class="wrap"><section class="controls">
+<div class="card"><div class="row"><div><label>Date</label><input id="date" type="date"></div><div><label>Time</label><input id="time" type="time" step="60"></div></div><div class="step"><button id="back">← 1 hour</button><button id="forward">1 hour →</button></div><div class="sliderWrap"><label>Move through time: <span id="sliderLabel">0 h</span></label><input id="slider" type="range" min="-6" max="6" step="0.25" value="0"><div class="note">Slider spans ±6 hours around the selected time.</div></div></div>
+<div class="card"><div id="displayTime" class="bigtime">—</div><div class="stat"><span>Nearest HW</span><b id="hw">—</b></div><div class="stat"><span>Tidal stage</span><b id="stage">—</b></div><div class="stat"><span>Tidal range</span><b id="range">—</b></div><div class="stat"><span>Range scale</span><b id="scale">—</b></div><div id="status" class="status">Getting tide prediction…</div></div>
+<div class="card"><label>Display options</label><div class="toggleRow"><input id="toggleBuoy" type="checkbox" checked><span>Show RTYC buoy arrows</span></div><div class="toggleRow"><input id="toggleBg" type="checkbox" checked><span>Show faint background % arrows</span></div><div class="note">Both sets of arrows are sampled from the same flow field.</div></div>
+<div class="card"><div class="note"><b>How to read it:</b> 100% is the deep-water reference current outside the Berry Head–Hope's Nose line. The field is curved by the bay geometry and bathymetry; offshore it trends along the established deep-water axis. Depth contours are shown on the clean background.</div></div>
+</section><section class="mapWrap"><div id="map"></div><div class="live">LIVE BUILD v0.7.2</div><div class="legend"><b>Predicted flow</b><br>Red = RTYC mark arrows<br>Faint red = wider background field<br>Arrow length = % of offshore reference<br>Depth contours: 5 m, 10 m, 15 m, 20 m<br><span style="color:#667085">Same field drives both arrow layers<br>Not for navigation</span></div></section></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script>
+const VERSION='v0.7.2',SPRING_RANGE=4.1,NEAP_RANGE=1.7,TORQUAY={lat:50.4619,lon:-3.5253};
+let DATA,map,baseTime,selectedTime,tideData=null,markLayers={},markArrowLayers=[],bgArrowLayers=[];
+const $=id=>document.getElementById(id),pad=n=>String(n).padStart(2,'0');
+function setInputsFromDate(d){$('date').value=`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;$('time').value=`${pad(d.getHours())}:${pad(d.getMinutes())}`}
+function readInputs(){return new Date(`${$('date').value}T${$('time').value||'12:00'}:00`)} function fmtDT(d){return d.toLocaleString('en-GB',{weekday:'short',day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'})} function fmtTime(d){return d.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'})} function compass(b){const a=['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'];return a[Math.round(b/22.5)%16]} function rangeFactor(r){return Math.max(.35,Math.min(1.15,.5+.5*(r-NEAP_RANGE)/(SPRING_RANGE-NEAP_RANGE)))}
+function xy(y,x){return [y,x]} function initMap(){map=L.map('map',{crs:L.CRS.Simple,minZoom:-2,maxZoom:2,zoomSnap:.25});const b=[[0,0],[DATA.image.height,DATA.image.width]];L.imageOverlay('./background-v072.png?v=072',b,{interactive:false}).addTo(map);map.fitBounds(b);DATA.marks.forEach(m=>{const icon=L.divIcon({className:'mark-label',html:m.name,iconSize:[28,28],iconAnchor:[14,14]});markLayers[m.name]=L.marker([m.y,m.x],{icon}).addTo(map).bindPopup(`<b>Mark ${m.name}</b><br>Waiting for tide data…`)});}
+function parseEvent(x){if(!x||typeof x!=='object')return null;const timeRaw=x.time??x.dateTime??x.datetime??x.timestamp??x.date;const heightRaw=x.level??x.height??x.value??x.waterLevel??x.water_level;if(!timeRaw)return null;let high=x.high===true,low=x.low===true;const t=x.label??x.type??x.extremeType??x.tide??x.event??x.kind??x.name??x.state;if(!high&&!low&&t){const s=String(t).toLowerCase();high=s.includes('high');low=s.includes('low')}if(!high&&!low)return null;const d=new Date(timeRaw);if(Number.isNaN(d.getTime()))return null;const h=Number(heightRaw);return{type:high?'high':'low',time:d,height:Number.isFinite(h)?h:null}}
+async function getTidesFor(d){const start=new Date(d.getTime()-36*3600e3),end=new Date(d.getTime()+36*3600e3);const url='https://api.openwaters.io/tides/extremes'+`?latitude=${TORQUAY.lat}&longitude=${TORQUAY.lon}&start=${encodeURIComponent(start.toISOString())}&end=${encodeURIComponent(end.toISOString())}&units=meters`;try{$('status').textContent='Getting tide prediction…';const r=await fetch(url,{mode:'cors'});if(!r.ok)throw new Error(`HTTP ${r.status}`);const j=await r.json();const events=(Array.isArray(j.extremes)?j.extremes:[]).map(parseEvent).filter(Boolean).sort((a,b)=>a.time-b.time);tideData={events,loadedFor:new Date(d),station:j.station||{},distance:Number(j.distance)};$('status').textContent=`Tide prediction loaded from ${tideData.station.name||'nearest harmonic station'}${Number.isFinite(tideData.distance)?` (${tideData.distance.toFixed(1)} km from Torquay query point)`:''}.`;$('apiMini').textContent=`Tide service connected • ${VERSION}`;render()}catch(err){console.error(err);$('status').textContent=`Tide lookup failed: ${err.message}`;$('apiMini').textContent='Tide service error'}}
+function nearestHigh(d){const hs=tideData.events.filter(e=>e.type==='high');return hs.reduce((a,b)=>Math.abs(b.time-d)<Math.abs(a.time-d)?b:a)} function rangeAround(high){const lows=tideData.events.filter(e=>e.type==='low');const p=lows.filter(e=>e.time<high.time).sort((a,b)=>b.time-a.time)[0],n=lows.filter(e=>e.time>high.time).sort((a,b)=>a.time-b.time)[0],v=[];if(p&&high.height!=null&&p.height!=null)v.push(Math.abs(high.height-p.height));if(n&&high.height!=null&&n.height!=null)v.push(Math.abs(high.height-n.height));return v.length?v.reduce((a,b)=>a+b,0)/v.length:3} function foldedHWOffset(d,hw){let h=(d-hw.time)/3600e3;while(h>6.21)h-=12.42;while(h<-6.21)h+=12.42;return h}
+function phase(h){const lo=Math.floor(Math.max(-6,Math.min(6,h))),hi=Math.ceil(Math.max(-6,Math.min(6,h))),f=h-lo;const get=k=>DATA.phase_factor[String(k)]??DATA.phase_factor[k]??0;return get(lo)+(get(hi)-get(lo))*f} function isFloodish(h){let x=Math.max(-6,Math.min(6,h));return x>-2&&x<4}
+function vec(item,h,scale){const p=phase(h)*scale*item.pct_ref/100;if(p<.01)return{speed:0,bearing:null};return{speed:p,bearing:isFloodish(h)?item.flood:item.ebb}}
+function clearArrows(){markArrowLayers.forEach(x=>map.removeLayer(x));bgArrowLayers.forEach(x=>map.removeLayer(x));markArrowLayers=[];bgArrowLayers=[]}
+function drawArrow(item,v,style,store){if(v.speed<.01||v.bearing==null)return;const L=style.mult*v.speed,a=v.bearing*Math.PI/180,dx=L*Math.sin(a),dy=-L*Math.cos(a),x2=item.x+dx,y2=item.y+dy;store.push(L.polyline([[item.y,item.x],[y2,x2]],{color:style.color,weight:style.weight,opacity:style.opacity}).addTo(map));const hl=Math.min(style.headMax,Math.max(style.headMin,L*.25)),a1=(v.bearing+155)*Math.PI/180,a2=(v.bearing-155)*Math.PI/180;const p1=[y2+hl*Math.cos(a1),x2-hl*Math.sin(a1)],p2=[y2+hl*Math.cos(a2),x2-hl*Math.sin(a2)];store.push(L.polyline([p1,[y2,x2],p2],{color:style.color,weight:style.weight,opacity:style.opacity}).addTo(map))}
+function render(){if(!tideData)return;$('displayTime').textContent=fmtDT(selectedTime);const hw=nearestHigh(selectedTime),rr=rangeAround(hw),sf=rangeFactor(rr),rel=foldedHWOffset(selectedTime,hw);$('hw').textContent=fmtTime(hw.time);$('stage').textContent=`HW ${rel>=0?'+':''}${rel.toFixed(1)} h`;$('range').textContent=`${rr.toFixed(2)} m`;$('scale').textContent=`${sf.toFixed(2)}×`;clearArrows();if($('toggleBg').checked)DATA.background.forEach(it=>drawArrow(it,vec(it,rel,sf),{mult:60,color:'#d46a5d',weight:2,opacity:.34,headMin:5,headMax:12},bgArrowLayers));DATA.marks.forEach(m=>{const v=vec(m,rel,sf);if($('toggleBuoy').checked)drawArrow(m,v,{mult:85,color:'#d92d20',weight:4,opacity:.95,headMin:7,headMax:17},markArrowLayers);const txt=v.speed<.01?'Very weak / slack':`${(v.speed*100).toFixed(0)}% of offshore reference @ ${Math.round(v.bearing)}°T (${compass(v.bearing)})`;markLayers[m.name].setPopupContent(`<b>Mark ${m.name}</b><br>${txt}<br><span style="color:#667085">Base peak: ${m.pct_ref}% of offshore reference<br>Depth basis: ${m.depth_m} m<br>Model ${VERSION}</span>`)});}
+async function boot(){DATA=await fetch('./data-v072.json?v=072',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(`data-v072.json HTTP ${r.status}`);return r.json()});initMap();const now=new Date();now.setMinutes(Math.round(now.getMinutes()/15)*15,0,0);baseTime=new Date(now);selectedTime=new Date(now);setInputsFromDate(now);$('toggleBuoy').addEventListener('change',render);$('toggleBg').addEventListener('change',render);$('slider').addEventListener('input',()=>{const off=Number($('slider').value);$('sliderLabel').textContent=`${off>=0?'+':''}${off} h`;selectedTime=new Date(baseTime.getTime()+off*3600e3);setInputsFromDate(selectedTime);render();if(!tideData||Math.abs(selectedTime-tideData.loadedFor)>24*3600e3)getTidesFor(selectedTime)});const typed=()=>{baseTime=readInputs();selectedTime=new Date(baseTime);$('slider').value=0;$('sliderLabel').textContent='0 h';getTidesFor(selectedTime)};$('date').addEventListener('change',typed);$('time').addEventListener('change',typed);$('back').addEventListener('click',()=>{selectedTime=new Date(selectedTime.getTime()-3600e3);baseTime=new Date(selectedTime);$('slider').value=0;$('sliderLabel').textContent='0 h';setInputsFromDate(selectedTime);getTidesFor(selectedTime)});$('forward').addEventListener('click',()=>{selectedTime=new Date(selectedTime.getTime()+3600e3);baseTime=new Date(selectedTime);$('slider').value=0;$('sliderLabel').textContent='0 h';setInputsFromDate(selectedTime);getTidesFor(selectedTime)});await getTidesFor(now)}boot().catch(err=>{console.error(err);$('status').textContent=`Viewer startup failed: ${err.message}`;$('apiMini').textContent='Startup error'});
+</script></body></html>
