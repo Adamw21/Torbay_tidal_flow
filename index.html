@@ -36,7 +36,7 @@ button{border:1px solid var(--blue);background:var(--blue);color:#fff;border-rad
 </head>
 <body>
 <header>
-  <div><h1>RTYC Tor Bay Tidal Flow Viewer</h1><div class="sub">Experimental current model • reference: HW Torquay</div></div>
+  <div><h1>RTYC Tor Bay Tidal Flow Viewer</h1><div class="sub">Experimental % current model • reference: HW Torquay</div></div>
   <div id="apiMini" class="sub">Loading tide service…</div>
 </header>
 <main>
@@ -62,18 +62,18 @@ button{border:1px solid var(--blue);background:var(--blue);color:#fff;border-rad
     <div class="stat"><span>Nearest HW</span><b id="hw">—</b></div>
     <div class="stat"><span>Tidal stage</span><b id="stage">—</b></div>
     <div class="stat"><span>Tidal range</span><b id="range">—</b></div>
-    <div class="stat"><span>Current scale</span><b id="scale">—</b></div>
+    <div class="stat"><span>Range scale</span><b id="scale">—</b></div>
     <div id="status" class="status">Getting tide prediction…</div>
   </div>
 
   <div class="card">
-    <div class="note"><b>How to read it:</b> arrows point in the direction the water is setting. Longer arrows mean stronger predicted flow. Click any RTYC mark for speed and bearing.</div>
+    <div class="note"><b>How to read it:</b> Red arrows point in the direction the water is setting. Longer arrows mean a larger percentage of the offshore reference flow. 100% is defined as the deep-water flow outside the Berry Head–Hope's Nose line. Click any RTYC mark for predicted percentage and bearing.</div>
   </div>
 </section>
 
 <section class="mapWrap">
   <div id="map"></div>
-  <div class="legend"><b>Predicted flow</b><br>Arrow = set direction<br>Length = relative speed (2× display scale)<br><span style="color:#667085">Not for navigation</span></div>
+  <div class="legend"><b>Predicted flow</b><br>Red arrow = set direction<br>Arrow length = % of offshore reference flow<br>Blue dashed line = approximate depth change<br><span style="color:#667085">100% = deep water outside Berry Head–Hope's Nose line<br>Not for navigation</span></div>
 </section>
 </main>
 
@@ -98,19 +98,69 @@ function rangeFactor(r){return Math.max(.35,Math.min(1.15,.5+.5*(r-NEAP_RANGE)/(
 
 function initMap(){
   map=L.map('map').setView([50.447,-3.524],13);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18,attribution:'&copy; OpenStreetMap contributors'}).addTo(map);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{
+    maxZoom:20,
+    subdomains:'abcd',
+    attribution:'&copy; OpenStreetMap contributors &copy; CARTO'
+  }).addTo(map);
   DATA.marks.forEach(m=>{
     const icon=L.divIcon({className:'mark-label',html:m.name,iconSize:[28,28],iconAnchor:[14,14]});
-    markLayers[m.name]=L.marker([m.lat,m.lon],{icon}).addTo(map).bindPopup(`<b>Mark ${m.name}</b><br>Waiting for tide data…`);
+    markLayers[m.name]=L.marker([m.lat,m.lon],{icon}).addTo(map).bindPopup(`<b>Mark ${m.name}</b><br>Waiting for tide data…<br><span style="color:#667085">Model basis: % of offshore reference flow</span>`);
   });
   addLandmark(50.4559,-3.5068,'Daddyhole Cove');
   addLandmark(50.4582,-3.4938,'Thatcher Rock');
   addLandmark(50.4615,-3.5245,'RTYC');
   addLandmark(50.4027,-3.4890,'Berry Head');
   addLandmark(50.4290,-3.5610,'Roundham Head');
+  addDepthOverlay();
 }
 function addLandmark(lat,lon,name){
   L.marker([lat,lon],{interactive:false,icon:L.divIcon({className:'landmark',html:name,iconAnchor:[0,0]})}).addTo(map);
+}
+function addDepthLabel(lat,lon,text){
+  L.marker([lat,lon],{interactive:false,icon:L.divIcon({className:'landmark',html:text,iconAnchor:[0,0]})}).addTo(map);
+}
+function addDepthOverlay(){
+  // Approximate bathymetry cue only: indicates where water tends to deepen
+  // across the RTYC race area. It is intentionally schematic, not a charted contour.
+  const contour = [
+    [50.456,-3.560],
+    [50.454,-3.545],
+    [50.451,-3.532],
+    [50.449,-3.519],
+    [50.447,-3.505],
+    [50.445,-3.490]
+  ];
+
+  const deeperZone = [
+    [50.456,-3.560],
+    [50.454,-3.545],
+    [50.451,-3.532],
+    [50.449,-3.519],
+    [50.447,-3.505],
+    [50.445,-3.490],
+    [50.388,-3.470],
+    [50.388,-3.585],
+    [50.456,-3.585]
+  ];
+
+  L.polygon(deeperZone,{
+    stroke:false,
+    fillColor:'#8ecae6',
+    fillOpacity:0.18,
+    interactive:false
+  }).addTo(map);
+
+  L.polyline(contour,{
+    color:'#2e6fbe',
+    weight:2,
+    dashArray:'7,7',
+    opacity:0.9,
+    interactive:false
+  }).addTo(map);
+
+  addDepthLabel(50.433,-3.535,'Approx. deeper water');
+  addDepthLabel(50.458,-3.545,'Relatively shallower inner bay');
 }
 
 /* OpenWaters response parser.
@@ -246,10 +296,12 @@ function render(){
   DATA.marks.forEach(m=>{
     const v=vector(m,rel,sf);
     drawArrow(m,v);
+    const pct=(v.speed*100).toFixed(0);
     const txt=v.speed<.01
       ? 'Very weak / slack'
-      : `${v.speed.toFixed(2)} kt @ ${String(Math.round(v.bearing)).padStart(3,'0')}°T (${compass(v.bearing)})`;
-    markLayers[m.name].setPopupContent(`<b>Mark ${m.name}</b><br>${txt}`);
+      : `${pct}% of offshore reference @ ${String(Math.round(v.bearing)).padStart(3,'0')}°T (${compass(v.bearing)})`;
+    const eq=(v.speed).toFixed(2);
+    markLayers[m.name].setPopupContent(`<b>Mark ${m.name}</b><br>${txt}<br><span style="color:#667085">Equivalent to ${eq} kt if offshore reference = 1.00 kt</span>`);
   });
 }
 

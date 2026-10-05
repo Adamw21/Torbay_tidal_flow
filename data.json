@@ -4,877 +4,933 @@
       "name": "G",
       "lat": 50.45483333333333,
       "lon": -3.5286666666666666,
-      "peak": 0.32,
-      "north": 300,
-      "south": 120
+      "peak": 0.28,
+      "flood": 163,
+      "ebb": 343,
+      "pct_ref": 28.0,
+      "depth_m": 12.5,
+      "chart_x": 502.3,
+      "chart_y": 399.4
     },
     {
       "name": "R",
       "lat": 50.454166666666666,
       "lon": -3.523833333333333,
-      "peak": 0.34,
-      "north": 295,
-      "south": 115
+      "peak": 0.332,
+      "flood": 159,
+      "ebb": 339,
+      "pct_ref": 33.2,
+      "depth_m": 12.5,
+      "chart_x": 568.0,
+      "chart_y": 383.4
     },
     {
       "name": "1",
       "lat": 50.4495,
       "lon": -3.5118333333333336,
-      "peak": 0.55,
-      "north": 350,
-      "south": 190
+      "peak": 0.527,
+      "flood": 162,
+      "ebb": 342,
+      "pct_ref": 52.7,
+      "depth_m": 12.5,
+      "chart_x": 737.1,
+      "chart_y": 394.6
     },
     {
       "name": "2",
       "lat": 50.4425,
       "lon": -3.5125,
-      "peak": 0.52,
-      "north": 352,
-      "south": 188
+      "peak": 0.524,
+      "flood": 184,
+      "ebb": 4,
+      "pct_ref": 52.4,
+      "depth_m": 12.5,
+      "chart_x": 741.8,
+      "chart_y": 516.4
     },
     {
       "name": "3",
       "lat": 50.439166666666665,
       "lon": -3.524,
-      "peak": 0.42,
-      "north": 345,
-      "south": 195
+      "peak": 0.375,
+      "flood": 207,
+      "ebb": 27,
+      "pct_ref": 37.5,
+      "depth_m": 12.5,
+      "chart_x": 595.0,
+      "chart_y": 637.3
     },
     {
       "name": "4",
       "lat": 50.4425,
       "lon": -3.5361666666666665,
-      "peak": 0.31,
-      "north": 338,
-      "south": 202
+      "peak": 0.271,
+      "flood": 195,
+      "ebb": 15,
+      "pct_ref": 27.1,
+      "depth_m": 7.5,
+      "chart_x": 426.3,
+      "chart_y": 649.6
     },
     {
       "name": "5",
       "lat": 50.44766666666666,
       "lon": -3.5406666666666666,
-      "peak": 0.28,
-      "north": 337,
-      "south": 203
+      "peak": 0.231,
+      "flood": 179,
+      "ebb": 359,
+      "pct_ref": 23.1,
+      "depth_m": 7.5,
+      "chart_x": 356.3,
+      "chart_y": 587.8
     },
     {
       "name": "6",
       "lat": 50.452666666666666,
       "lon": -3.5368333333333335,
-      "peak": 0.27,
-      "north": 338,
-      "south": 202
+      "peak": 0.23,
+      "flood": 176,
+      "ebb": 356,
+      "pct_ref": 23.0,
+      "depth_m": 12.5,
+      "chart_x": 397.6,
+      "chart_y": 481.9
     },
     {
       "name": "M",
       "lat": 50.4495,
       "lon": -3.5298333333333334,
-      "peak": 0.36,
-      "north": 341,
-      "south": 199
+      "peak": 0.286,
+      "flood": 180,
+      "ebb": 360,
+      "pct_ref": 28.6,
+      "depth_m": 12.5,
+      "chart_x": 497.1,
+      "chart_y": 495.9
     },
     {
       "name": "T",
       "lat": 50.454166666666666,
       "lon": -3.5,
-      "peak": 0.72,
-      "north": 356,
-      "south": 184
+      "peak": 0.907,
+      "flood": 146,
+      "ebb": 326,
+      "pct_ref": 90.7,
+      "depth_m": 12.5,
+      "chart_x": 885.7,
+      "chart_y": 249.2
     },
     {
       "name": "X",
       "lat": 50.4215,
       "lon": -3.547,
-      "peak": 0.34,
-      "north": 345,
-      "south": 195
+      "peak": 0.0,
+      "flood": 222,
+      "ebb": 42,
+      "pct_ref": 0.0,
+      "depth_m": 2.1,
+      "chart_x": 322.9,
+      "chart_y": 1064.8
     },
     {
       "name": "Y",
       "lat": 50.45666666666666,
       "lon": -3.4695,
-      "peak": 0.9,
-      "north": 2,
-      "south": 182
+      "peak": 1.007,
+      "flood": 169,
+      "ebb": 349,
+      "pct_ref": 100.7,
+      "depth_m": 25.0,
+      "chart_x": 1287.4,
+      "chart_y": 35.3
     },
     {
       "name": "Z",
       "lat": 50.40566666666667,
       "lon": -3.5175,
-      "peak": 0.48,
-      "north": 352,
-      "south": 188
+      "peak": 0.008,
+      "flood": 225,
+      "ebb": 45,
+      "pct_ref": 0.8,
+      "depth_m": 9.6,
+      "chart_x": 747.0,
+      "chart_y": 1165.8
     },
     {
       "name": "Em",
       "lat": 50.468333333333334,
       "lon": -3.4143333333333334,
-      "peak": 0.95,
-      "north": 5,
-      "south": 185
+      "peak": 1.007,
+      "flood": 169,
+      "ebb": 349,
+      "pct_ref": 100.7,
+      "depth_m": 25.0,
+      "chart_x": 2000.0,
+      "chart_y": -472.0
     }
   ],
   "vectors": [
     {
       "mark": "G",
       "hw_offset": -6,
-      "bearing": 120,
-      "spring_knots": 0.277
-    },
-    {
-      "mark": "G",
-      "hw_offset": -5,
-      "bearing": 120,
-      "spring_knots": 0.32
-    },
-    {
-      "mark": "G",
-      "hw_offset": -4,
-      "bearing": 120,
-      "spring_knots": 0.277
-    },
-    {
-      "mark": "G",
-      "hw_offset": -3,
-      "bearing": 120,
-      "spring_knots": 0.16
-    },
-    {
-      "mark": "G",
-      "hw_offset": -2,
-      "bearing": null,
-      "spring_knots": 0.0
-    },
-    {
-      "mark": "G",
-      "hw_offset": -1,
-      "bearing": 300,
-      "spring_knots": 0.16
-    },
-    {
-      "mark": "G",
-      "hw_offset": 0,
-      "bearing": 300,
-      "spring_knots": 0.277
-    },
-    {
-      "mark": "G",
-      "hw_offset": 1,
-      "bearing": 300,
-      "spring_knots": 0.32
-    },
-    {
-      "mark": "G",
-      "hw_offset": 2,
-      "bearing": 300,
-      "spring_knots": 0.277
-    },
-    {
-      "mark": "G",
-      "hw_offset": 3,
-      "bearing": 300,
-      "spring_knots": 0.16
-    },
-    {
-      "mark": "G",
-      "hw_offset": 4,
-      "bearing": null,
-      "spring_knots": 0.0
-    },
-    {
-      "mark": "G",
-      "hw_offset": 5,
-      "bearing": 120,
-      "spring_knots": 0.16
-    },
-    {
-      "mark": "G",
-      "hw_offset": 6,
-      "bearing": 120,
-      "spring_knots": 0.277
-    },
-    {
-      "mark": "R",
-      "hw_offset": -6,
-      "bearing": 115,
-      "spring_knots": 0.294
-    },
-    {
-      "mark": "R",
-      "hw_offset": -5,
-      "bearing": 115,
-      "spring_knots": 0.34
-    },
-    {
-      "mark": "R",
-      "hw_offset": -4,
-      "bearing": 115,
-      "spring_knots": 0.294
-    },
-    {
-      "mark": "R",
-      "hw_offset": -3,
-      "bearing": 115,
-      "spring_knots": 0.17
-    },
-    {
-      "mark": "R",
-      "hw_offset": -2,
-      "bearing": null,
-      "spring_knots": 0.0
-    },
-    {
-      "mark": "R",
-      "hw_offset": -1,
-      "bearing": 295,
-      "spring_knots": 0.17
-    },
-    {
-      "mark": "R",
-      "hw_offset": 0,
-      "bearing": 295,
-      "spring_knots": 0.294
-    },
-    {
-      "mark": "R",
-      "hw_offset": 1,
-      "bearing": 295,
-      "spring_knots": 0.34
-    },
-    {
-      "mark": "R",
-      "hw_offset": 2,
-      "bearing": 295,
-      "spring_knots": 0.294
-    },
-    {
-      "mark": "R",
-      "hw_offset": 3,
-      "bearing": 295,
-      "spring_knots": 0.17
-    },
-    {
-      "mark": "R",
-      "hw_offset": 4,
-      "bearing": null,
-      "spring_knots": 0.0
-    },
-    {
-      "mark": "R",
-      "hw_offset": 5,
-      "bearing": 115,
-      "spring_knots": 0.17
-    },
-    {
-      "mark": "R",
-      "hw_offset": 6,
-      "bearing": 115,
-      "spring_knots": 0.294
-    },
-    {
-      "mark": "1",
-      "hw_offset": -6,
-      "bearing": 190,
-      "spring_knots": 0.476
-    },
-    {
-      "mark": "1",
-      "hw_offset": -5,
-      "bearing": 190,
-      "spring_knots": 0.55
-    },
-    {
-      "mark": "1",
-      "hw_offset": -4,
-      "bearing": 190,
-      "spring_knots": 0.476
-    },
-    {
-      "mark": "1",
-      "hw_offset": -3,
-      "bearing": 190,
-      "spring_knots": 0.275
-    },
-    {
-      "mark": "1",
-      "hw_offset": -2,
-      "bearing": null,
-      "spring_knots": 0.0
-    },
-    {
-      "mark": "1",
-      "hw_offset": -1,
-      "bearing": 350,
-      "spring_knots": 0.275
-    },
-    {
-      "mark": "1",
-      "hw_offset": 0,
-      "bearing": 350,
-      "spring_knots": 0.476
-    },
-    {
-      "mark": "1",
-      "hw_offset": 1,
-      "bearing": 350,
-      "spring_knots": 0.55
-    },
-    {
-      "mark": "1",
-      "hw_offset": 2,
-      "bearing": 350,
-      "spring_knots": 0.476
-    },
-    {
-      "mark": "1",
-      "hw_offset": 3,
-      "bearing": 350,
-      "spring_knots": 0.275
-    },
-    {
-      "mark": "1",
-      "hw_offset": 4,
-      "bearing": null,
-      "spring_knots": 0.0
-    },
-    {
-      "mark": "1",
-      "hw_offset": 5,
-      "bearing": 190,
-      "spring_knots": 0.275
-    },
-    {
-      "mark": "1",
-      "hw_offset": 6,
-      "bearing": 190,
-      "spring_knots": 0.476
-    },
-    {
-      "mark": "2",
-      "hw_offset": -6,
-      "bearing": 188,
-      "spring_knots": 0.45
-    },
-    {
-      "mark": "2",
-      "hw_offset": -5,
-      "bearing": 188,
-      "spring_knots": 0.52
-    },
-    {
-      "mark": "2",
-      "hw_offset": -4,
-      "bearing": 188,
-      "spring_knots": 0.45
-    },
-    {
-      "mark": "2",
-      "hw_offset": -3,
-      "bearing": 188,
-      "spring_knots": 0.26
-    },
-    {
-      "mark": "2",
-      "hw_offset": -2,
-      "bearing": null,
-      "spring_knots": 0.0
-    },
-    {
-      "mark": "2",
-      "hw_offset": -1,
-      "bearing": 352,
-      "spring_knots": 0.26
-    },
-    {
-      "mark": "2",
-      "hw_offset": 0,
-      "bearing": 352,
-      "spring_knots": 0.45
-    },
-    {
-      "mark": "2",
-      "hw_offset": 1,
-      "bearing": 352,
-      "spring_knots": 0.52
-    },
-    {
-      "mark": "2",
-      "hw_offset": 2,
-      "bearing": 352,
-      "spring_knots": 0.45
-    },
-    {
-      "mark": "2",
-      "hw_offset": 3,
-      "bearing": 352,
-      "spring_knots": 0.26
-    },
-    {
-      "mark": "2",
-      "hw_offset": 4,
-      "bearing": null,
-      "spring_knots": 0.0
-    },
-    {
-      "mark": "2",
-      "hw_offset": 5,
-      "bearing": 188,
-      "spring_knots": 0.26
-    },
-    {
-      "mark": "2",
-      "hw_offset": 6,
-      "bearing": 188,
-      "spring_knots": 0.45
-    },
-    {
-      "mark": "3",
-      "hw_offset": -6,
-      "bearing": 195,
-      "spring_knots": 0.364
-    },
-    {
-      "mark": "3",
-      "hw_offset": -5,
-      "bearing": 195,
-      "spring_knots": 0.42
-    },
-    {
-      "mark": "3",
-      "hw_offset": -4,
-      "bearing": 195,
-      "spring_knots": 0.364
-    },
-    {
-      "mark": "3",
-      "hw_offset": -3,
-      "bearing": 195,
-      "spring_knots": 0.21
-    },
-    {
-      "mark": "3",
-      "hw_offset": -2,
-      "bearing": null,
-      "spring_knots": 0.0
-    },
-    {
-      "mark": "3",
-      "hw_offset": -1,
-      "bearing": 345,
-      "spring_knots": 0.21
-    },
-    {
-      "mark": "3",
-      "hw_offset": 0,
-      "bearing": 345,
-      "spring_knots": 0.364
-    },
-    {
-      "mark": "3",
-      "hw_offset": 1,
-      "bearing": 345,
-      "spring_knots": 0.42
-    },
-    {
-      "mark": "3",
-      "hw_offset": 2,
-      "bearing": 345,
-      "spring_knots": 0.364
-    },
-    {
-      "mark": "3",
-      "hw_offset": 3,
-      "bearing": 345,
-      "spring_knots": 0.21
-    },
-    {
-      "mark": "3",
-      "hw_offset": 4,
-      "bearing": null,
-      "spring_knots": 0.0
-    },
-    {
-      "mark": "3",
-      "hw_offset": 5,
-      "bearing": 195,
-      "spring_knots": 0.21
-    },
-    {
-      "mark": "3",
-      "hw_offset": 6,
-      "bearing": 195,
-      "spring_knots": 0.364
-    },
-    {
-      "mark": "4",
-      "hw_offset": -6,
-      "bearing": 202,
-      "spring_knots": 0.268
-    },
-    {
-      "mark": "4",
-      "hw_offset": -5,
-      "bearing": 202,
-      "spring_knots": 0.31
-    },
-    {
-      "mark": "4",
-      "hw_offset": -4,
-      "bearing": 202,
-      "spring_knots": 0.268
-    },
-    {
-      "mark": "4",
-      "hw_offset": -3,
-      "bearing": 202,
-      "spring_knots": 0.155
-    },
-    {
-      "mark": "4",
-      "hw_offset": -2,
-      "bearing": null,
-      "spring_knots": 0.0
-    },
-    {
-      "mark": "4",
-      "hw_offset": -1,
-      "bearing": 338,
-      "spring_knots": 0.155
-    },
-    {
-      "mark": "4",
-      "hw_offset": 0,
-      "bearing": 338,
-      "spring_knots": 0.268
-    },
-    {
-      "mark": "4",
-      "hw_offset": 1,
-      "bearing": 338,
-      "spring_knots": 0.31
-    },
-    {
-      "mark": "4",
-      "hw_offset": 2,
-      "bearing": 338,
-      "spring_knots": 0.268
-    },
-    {
-      "mark": "4",
-      "hw_offset": 3,
-      "bearing": 338,
-      "spring_knots": 0.155
-    },
-    {
-      "mark": "4",
-      "hw_offset": 4,
-      "bearing": null,
-      "spring_knots": 0.0
-    },
-    {
-      "mark": "4",
-      "hw_offset": 5,
-      "bearing": 202,
-      "spring_knots": 0.155
-    },
-    {
-      "mark": "4",
-      "hw_offset": 6,
-      "bearing": 202,
-      "spring_knots": 0.268
-    },
-    {
-      "mark": "5",
-      "hw_offset": -6,
-      "bearing": 203,
+      "bearing": 343,
       "spring_knots": 0.242
     },
     {
-      "mark": "5",
+      "mark": "G",
       "hw_offset": -5,
-      "bearing": 203,
+      "bearing": 343,
       "spring_knots": 0.28
     },
     {
-      "mark": "5",
+      "mark": "G",
       "hw_offset": -4,
-      "bearing": 203,
+      "bearing": 343,
       "spring_knots": 0.242
     },
     {
-      "mark": "5",
+      "mark": "G",
       "hw_offset": -3,
-      "bearing": 203,
+      "bearing": 343,
       "spring_knots": 0.14
     },
     {
-      "mark": "5",
+      "mark": "G",
       "hw_offset": -2,
       "bearing": null,
       "spring_knots": 0.0
     },
     {
-      "mark": "5",
+      "mark": "G",
       "hw_offset": -1,
-      "bearing": 337,
+      "bearing": 163,
       "spring_knots": 0.14
     },
     {
-      "mark": "5",
+      "mark": "G",
       "hw_offset": 0,
-      "bearing": 337,
+      "bearing": 163,
       "spring_knots": 0.242
     },
     {
-      "mark": "5",
+      "mark": "G",
       "hw_offset": 1,
-      "bearing": 337,
+      "bearing": 163,
       "spring_knots": 0.28
     },
     {
-      "mark": "5",
+      "mark": "G",
       "hw_offset": 2,
-      "bearing": 337,
+      "bearing": 163,
       "spring_knots": 0.242
     },
     {
-      "mark": "5",
+      "mark": "G",
       "hw_offset": 3,
-      "bearing": 337,
+      "bearing": 163,
       "spring_knots": 0.14
     },
     {
-      "mark": "5",
+      "mark": "G",
       "hw_offset": 4,
       "bearing": null,
       "spring_knots": 0.0
     },
     {
-      "mark": "5",
+      "mark": "G",
       "hw_offset": 5,
-      "bearing": 203,
+      "bearing": 343,
       "spring_knots": 0.14
     },
     {
-      "mark": "5",
+      "mark": "G",
       "hw_offset": 6,
-      "bearing": 203,
+      "bearing": 343,
       "spring_knots": 0.242
     },
     {
-      "mark": "6",
+      "mark": "R",
       "hw_offset": -6,
-      "bearing": 202,
-      "spring_knots": 0.234
+      "bearing": 339,
+      "spring_knots": 0.287
     },
     {
-      "mark": "6",
+      "mark": "R",
       "hw_offset": -5,
-      "bearing": 202,
-      "spring_knots": 0.27
+      "bearing": 339,
+      "spring_knots": 0.332
     },
     {
-      "mark": "6",
+      "mark": "R",
       "hw_offset": -4,
-      "bearing": 202,
-      "spring_knots": 0.234
+      "bearing": 339,
+      "spring_knots": 0.287
     },
     {
-      "mark": "6",
+      "mark": "R",
       "hw_offset": -3,
-      "bearing": 202,
-      "spring_knots": 0.135
+      "bearing": 339,
+      "spring_knots": 0.166
     },
     {
-      "mark": "6",
+      "mark": "R",
       "hw_offset": -2,
       "bearing": null,
       "spring_knots": 0.0
     },
     {
-      "mark": "6",
+      "mark": "R",
       "hw_offset": -1,
-      "bearing": 338,
-      "spring_knots": 0.135
+      "bearing": 159,
+      "spring_knots": 0.166
     },
     {
-      "mark": "6",
+      "mark": "R",
       "hw_offset": 0,
-      "bearing": 338,
-      "spring_knots": 0.234
+      "bearing": 159,
+      "spring_knots": 0.287
     },
     {
-      "mark": "6",
+      "mark": "R",
       "hw_offset": 1,
-      "bearing": 338,
-      "spring_knots": 0.27
+      "bearing": 159,
+      "spring_knots": 0.332
     },
     {
-      "mark": "6",
+      "mark": "R",
       "hw_offset": 2,
-      "bearing": 338,
-      "spring_knots": 0.234
+      "bearing": 159,
+      "spring_knots": 0.287
     },
     {
-      "mark": "6",
+      "mark": "R",
       "hw_offset": 3,
-      "bearing": 338,
-      "spring_knots": 0.135
+      "bearing": 159,
+      "spring_knots": 0.166
     },
     {
-      "mark": "6",
+      "mark": "R",
       "hw_offset": 4,
       "bearing": null,
       "spring_knots": 0.0
     },
     {
-      "mark": "6",
+      "mark": "R",
       "hw_offset": 5,
-      "bearing": 202,
-      "spring_knots": 0.135
+      "bearing": 339,
+      "spring_knots": 0.166
     },
     {
-      "mark": "6",
+      "mark": "R",
       "hw_offset": 6,
-      "bearing": 202,
-      "spring_knots": 0.234
+      "bearing": 339,
+      "spring_knots": 0.287
     },
     {
-      "mark": "M",
+      "mark": "1",
       "hw_offset": -6,
-      "bearing": 199,
-      "spring_knots": 0.312
+      "bearing": 342,
+      "spring_knots": 0.456
     },
     {
-      "mark": "M",
+      "mark": "1",
       "hw_offset": -5,
-      "bearing": 199,
-      "spring_knots": 0.36
+      "bearing": 342,
+      "spring_knots": 0.527
     },
     {
-      "mark": "M",
+      "mark": "1",
       "hw_offset": -4,
-      "bearing": 199,
-      "spring_knots": 0.312
+      "bearing": 342,
+      "spring_knots": 0.456
     },
     {
-      "mark": "M",
+      "mark": "1",
       "hw_offset": -3,
-      "bearing": 199,
-      "spring_knots": 0.18
+      "bearing": 342,
+      "spring_knots": 0.263
     },
     {
-      "mark": "M",
+      "mark": "1",
       "hw_offset": -2,
       "bearing": null,
       "spring_knots": 0.0
     },
     {
-      "mark": "M",
+      "mark": "1",
       "hw_offset": -1,
-      "bearing": 341,
-      "spring_knots": 0.18
+      "bearing": 162,
+      "spring_knots": 0.263
     },
     {
-      "mark": "M",
+      "mark": "1",
       "hw_offset": 0,
-      "bearing": 341,
-      "spring_knots": 0.312
+      "bearing": 162,
+      "spring_knots": 0.456
     },
     {
-      "mark": "M",
+      "mark": "1",
       "hw_offset": 1,
-      "bearing": 341,
-      "spring_knots": 0.36
+      "bearing": 162,
+      "spring_knots": 0.527
     },
     {
-      "mark": "M",
+      "mark": "1",
       "hw_offset": 2,
-      "bearing": 341,
-      "spring_knots": 0.312
+      "bearing": 162,
+      "spring_knots": 0.456
     },
     {
-      "mark": "M",
+      "mark": "1",
       "hw_offset": 3,
-      "bearing": 341,
-      "spring_knots": 0.18
+      "bearing": 162,
+      "spring_knots": 0.263
     },
     {
-      "mark": "M",
+      "mark": "1",
       "hw_offset": 4,
       "bearing": null,
       "spring_knots": 0.0
     },
     {
-      "mark": "M",
+      "mark": "1",
       "hw_offset": 5,
-      "bearing": 199,
-      "spring_knots": 0.18
+      "bearing": 342,
+      "spring_knots": 0.263
     },
     {
-      "mark": "M",
+      "mark": "1",
       "hw_offset": 6,
-      "bearing": 199,
-      "spring_knots": 0.312
+      "bearing": 342,
+      "spring_knots": 0.456
     },
     {
-      "mark": "T",
+      "mark": "2",
       "hw_offset": -6,
-      "bearing": 184,
-      "spring_knots": 0.624
+      "bearing": 4,
+      "spring_knots": 0.454
     },
     {
-      "mark": "T",
+      "mark": "2",
       "hw_offset": -5,
-      "bearing": 184,
-      "spring_knots": 0.72
+      "bearing": 4,
+      "spring_knots": 0.524
     },
     {
-      "mark": "T",
+      "mark": "2",
       "hw_offset": -4,
-      "bearing": 184,
-      "spring_knots": 0.624
+      "bearing": 4,
+      "spring_knots": 0.454
     },
     {
-      "mark": "T",
+      "mark": "2",
       "hw_offset": -3,
-      "bearing": 184,
-      "spring_knots": 0.36
+      "bearing": 4,
+      "spring_knots": 0.262
     },
     {
-      "mark": "T",
+      "mark": "2",
       "hw_offset": -2,
       "bearing": null,
       "spring_knots": 0.0
     },
     {
-      "mark": "T",
+      "mark": "2",
       "hw_offset": -1,
+      "bearing": 184,
+      "spring_knots": 0.262
+    },
+    {
+      "mark": "2",
+      "hw_offset": 0,
+      "bearing": 184,
+      "spring_knots": 0.454
+    },
+    {
+      "mark": "2",
+      "hw_offset": 1,
+      "bearing": 184,
+      "spring_knots": 0.524
+    },
+    {
+      "mark": "2",
+      "hw_offset": 2,
+      "bearing": 184,
+      "spring_knots": 0.454
+    },
+    {
+      "mark": "2",
+      "hw_offset": 3,
+      "bearing": 184,
+      "spring_knots": 0.262
+    },
+    {
+      "mark": "2",
+      "hw_offset": 4,
+      "bearing": null,
+      "spring_knots": 0.0
+    },
+    {
+      "mark": "2",
+      "hw_offset": 5,
+      "bearing": 4,
+      "spring_knots": 0.262
+    },
+    {
+      "mark": "2",
+      "hw_offset": 6,
+      "bearing": 4,
+      "spring_knots": 0.454
+    },
+    {
+      "mark": "3",
+      "hw_offset": -6,
+      "bearing": 27,
+      "spring_knots": 0.325
+    },
+    {
+      "mark": "3",
+      "hw_offset": -5,
+      "bearing": 27,
+      "spring_knots": 0.375
+    },
+    {
+      "mark": "3",
+      "hw_offset": -4,
+      "bearing": 27,
+      "spring_knots": 0.325
+    },
+    {
+      "mark": "3",
+      "hw_offset": -3,
+      "bearing": 27,
+      "spring_knots": 0.188
+    },
+    {
+      "mark": "3",
+      "hw_offset": -2,
+      "bearing": null,
+      "spring_knots": 0.0
+    },
+    {
+      "mark": "3",
+      "hw_offset": -1,
+      "bearing": 207,
+      "spring_knots": 0.188
+    },
+    {
+      "mark": "3",
+      "hw_offset": 0,
+      "bearing": 207,
+      "spring_knots": 0.325
+    },
+    {
+      "mark": "3",
+      "hw_offset": 1,
+      "bearing": 207,
+      "spring_knots": 0.375
+    },
+    {
+      "mark": "3",
+      "hw_offset": 2,
+      "bearing": 207,
+      "spring_knots": 0.325
+    },
+    {
+      "mark": "3",
+      "hw_offset": 3,
+      "bearing": 207,
+      "spring_knots": 0.188
+    },
+    {
+      "mark": "3",
+      "hw_offset": 4,
+      "bearing": null,
+      "spring_knots": 0.0
+    },
+    {
+      "mark": "3",
+      "hw_offset": 5,
+      "bearing": 27,
+      "spring_knots": 0.188
+    },
+    {
+      "mark": "3",
+      "hw_offset": 6,
+      "bearing": 27,
+      "spring_knots": 0.325
+    },
+    {
+      "mark": "4",
+      "hw_offset": -6,
+      "bearing": 15,
+      "spring_knots": 0.235
+    },
+    {
+      "mark": "4",
+      "hw_offset": -5,
+      "bearing": 15,
+      "spring_knots": 0.271
+    },
+    {
+      "mark": "4",
+      "hw_offset": -4,
+      "bearing": 15,
+      "spring_knots": 0.235
+    },
+    {
+      "mark": "4",
+      "hw_offset": -3,
+      "bearing": 15,
+      "spring_knots": 0.136
+    },
+    {
+      "mark": "4",
+      "hw_offset": -2,
+      "bearing": null,
+      "spring_knots": 0.0
+    },
+    {
+      "mark": "4",
+      "hw_offset": -1,
+      "bearing": 195,
+      "spring_knots": 0.136
+    },
+    {
+      "mark": "4",
+      "hw_offset": 0,
+      "bearing": 195,
+      "spring_knots": 0.235
+    },
+    {
+      "mark": "4",
+      "hw_offset": 1,
+      "bearing": 195,
+      "spring_knots": 0.271
+    },
+    {
+      "mark": "4",
+      "hw_offset": 2,
+      "bearing": 195,
+      "spring_knots": 0.235
+    },
+    {
+      "mark": "4",
+      "hw_offset": 3,
+      "bearing": 195,
+      "spring_knots": 0.136
+    },
+    {
+      "mark": "4",
+      "hw_offset": 4,
+      "bearing": null,
+      "spring_knots": 0.0
+    },
+    {
+      "mark": "4",
+      "hw_offset": 5,
+      "bearing": 15,
+      "spring_knots": 0.136
+    },
+    {
+      "mark": "4",
+      "hw_offset": 6,
+      "bearing": 15,
+      "spring_knots": 0.235
+    },
+    {
+      "mark": "5",
+      "hw_offset": -6,
+      "bearing": 359,
+      "spring_knots": 0.2
+    },
+    {
+      "mark": "5",
+      "hw_offset": -5,
+      "bearing": 359,
+      "spring_knots": 0.231
+    },
+    {
+      "mark": "5",
+      "hw_offset": -4,
+      "bearing": 359,
+      "spring_knots": 0.2
+    },
+    {
+      "mark": "5",
+      "hw_offset": -3,
+      "bearing": 359,
+      "spring_knots": 0.115
+    },
+    {
+      "mark": "5",
+      "hw_offset": -2,
+      "bearing": null,
+      "spring_knots": 0.0
+    },
+    {
+      "mark": "5",
+      "hw_offset": -1,
+      "bearing": 179,
+      "spring_knots": 0.115
+    },
+    {
+      "mark": "5",
+      "hw_offset": 0,
+      "bearing": 179,
+      "spring_knots": 0.2
+    },
+    {
+      "mark": "5",
+      "hw_offset": 1,
+      "bearing": 179,
+      "spring_knots": 0.231
+    },
+    {
+      "mark": "5",
+      "hw_offset": 2,
+      "bearing": 179,
+      "spring_knots": 0.2
+    },
+    {
+      "mark": "5",
+      "hw_offset": 3,
+      "bearing": 179,
+      "spring_knots": 0.115
+    },
+    {
+      "mark": "5",
+      "hw_offset": 4,
+      "bearing": null,
+      "spring_knots": 0.0
+    },
+    {
+      "mark": "5",
+      "hw_offset": 5,
+      "bearing": 359,
+      "spring_knots": 0.115
+    },
+    {
+      "mark": "5",
+      "hw_offset": 6,
+      "bearing": 359,
+      "spring_knots": 0.2
+    },
+    {
+      "mark": "6",
+      "hw_offset": -6,
       "bearing": 356,
-      "spring_knots": 0.36
+      "spring_knots": 0.199
+    },
+    {
+      "mark": "6",
+      "hw_offset": -5,
+      "bearing": 356,
+      "spring_knots": 0.23
+    },
+    {
+      "mark": "6",
+      "hw_offset": -4,
+      "bearing": 356,
+      "spring_knots": 0.199
+    },
+    {
+      "mark": "6",
+      "hw_offset": -3,
+      "bearing": 356,
+      "spring_knots": 0.115
+    },
+    {
+      "mark": "6",
+      "hw_offset": -2,
+      "bearing": null,
+      "spring_knots": 0.0
+    },
+    {
+      "mark": "6",
+      "hw_offset": -1,
+      "bearing": 176,
+      "spring_knots": 0.115
+    },
+    {
+      "mark": "6",
+      "hw_offset": 0,
+      "bearing": 176,
+      "spring_knots": 0.199
+    },
+    {
+      "mark": "6",
+      "hw_offset": 1,
+      "bearing": 176,
+      "spring_knots": 0.23
+    },
+    {
+      "mark": "6",
+      "hw_offset": 2,
+      "bearing": 176,
+      "spring_knots": 0.199
+    },
+    {
+      "mark": "6",
+      "hw_offset": 3,
+      "bearing": 176,
+      "spring_knots": 0.115
+    },
+    {
+      "mark": "6",
+      "hw_offset": 4,
+      "bearing": null,
+      "spring_knots": 0.0
+    },
+    {
+      "mark": "6",
+      "hw_offset": 5,
+      "bearing": 356,
+      "spring_knots": 0.115
+    },
+    {
+      "mark": "6",
+      "hw_offset": 6,
+      "bearing": 356,
+      "spring_knots": 0.199
+    },
+    {
+      "mark": "M",
+      "hw_offset": -6,
+      "bearing": 360,
+      "spring_knots": 0.247
+    },
+    {
+      "mark": "M",
+      "hw_offset": -5,
+      "bearing": 360,
+      "spring_knots": 0.286
+    },
+    {
+      "mark": "M",
+      "hw_offset": -4,
+      "bearing": 360,
+      "spring_knots": 0.247
+    },
+    {
+      "mark": "M",
+      "hw_offset": -3,
+      "bearing": 360,
+      "spring_knots": 0.143
+    },
+    {
+      "mark": "M",
+      "hw_offset": -2,
+      "bearing": null,
+      "spring_knots": 0.0
+    },
+    {
+      "mark": "M",
+      "hw_offset": -1,
+      "bearing": 180,
+      "spring_knots": 0.143
+    },
+    {
+      "mark": "M",
+      "hw_offset": 0,
+      "bearing": 180,
+      "spring_knots": 0.247
+    },
+    {
+      "mark": "M",
+      "hw_offset": 1,
+      "bearing": 180,
+      "spring_knots": 0.286
+    },
+    {
+      "mark": "M",
+      "hw_offset": 2,
+      "bearing": 180,
+      "spring_knots": 0.247
+    },
+    {
+      "mark": "M",
+      "hw_offset": 3,
+      "bearing": 180,
+      "spring_knots": 0.143
+    },
+    {
+      "mark": "M",
+      "hw_offset": 4,
+      "bearing": null,
+      "spring_knots": 0.0
+    },
+    {
+      "mark": "M",
+      "hw_offset": 5,
+      "bearing": 360,
+      "spring_knots": 0.143
+    },
+    {
+      "mark": "M",
+      "hw_offset": 6,
+      "bearing": 360,
+      "spring_knots": 0.247
+    },
+    {
+      "mark": "T",
+      "hw_offset": -6,
+      "bearing": 326,
+      "spring_knots": 0.786
+    },
+    {
+      "mark": "T",
+      "hw_offset": -5,
+      "bearing": 326,
+      "spring_knots": 0.907
+    },
+    {
+      "mark": "T",
+      "hw_offset": -4,
+      "bearing": 326,
+      "spring_knots": 0.786
+    },
+    {
+      "mark": "T",
+      "hw_offset": -3,
+      "bearing": 326,
+      "spring_knots": 0.454
+    },
+    {
+      "mark": "T",
+      "hw_offset": -2,
+      "bearing": null,
+      "spring_knots": 0.0
+    },
+    {
+      "mark": "T",
+      "hw_offset": -1,
+      "bearing": 146,
+      "spring_knots": 0.454
     },
     {
       "mark": "T",
       "hw_offset": 0,
-      "bearing": 356,
-      "spring_knots": 0.624
+      "bearing": 146,
+      "spring_knots": 0.786
     },
     {
       "mark": "T",
       "hw_offset": 1,
-      "bearing": 356,
-      "spring_knots": 0.72
+      "bearing": 146,
+      "spring_knots": 0.907
     },
     {
       "mark": "T",
       "hw_offset": 2,
-      "bearing": 356,
-      "spring_knots": 0.624
+      "bearing": 146,
+      "spring_knots": 0.786
     },
     {
       "mark": "T",
       "hw_offset": 3,
-      "bearing": 356,
-      "spring_knots": 0.36
+      "bearing": 146,
+      "spring_knots": 0.454
     },
     {
       "mark": "T",
@@ -885,38 +941,38 @@
     {
       "mark": "T",
       "hw_offset": 5,
-      "bearing": 184,
-      "spring_knots": 0.36
+      "bearing": 326,
+      "spring_knots": 0.454
     },
     {
       "mark": "T",
       "hw_offset": 6,
-      "bearing": 184,
-      "spring_knots": 0.624
+      "bearing": 326,
+      "spring_knots": 0.786
     },
     {
       "mark": "X",
       "hw_offset": -6,
-      "bearing": 195,
-      "spring_knots": 0.294
+      "bearing": 42,
+      "spring_knots": 0.0
     },
     {
       "mark": "X",
       "hw_offset": -5,
-      "bearing": 195,
-      "spring_knots": 0.34
+      "bearing": 42,
+      "spring_knots": 0.0
     },
     {
       "mark": "X",
       "hw_offset": -4,
-      "bearing": 195,
-      "spring_knots": 0.294
+      "bearing": 42,
+      "spring_knots": 0.0
     },
     {
       "mark": "X",
       "hw_offset": -3,
-      "bearing": 195,
-      "spring_knots": 0.17
+      "bearing": 42,
+      "spring_knots": 0.0
     },
     {
       "mark": "X",
@@ -927,32 +983,32 @@
     {
       "mark": "X",
       "hw_offset": -1,
-      "bearing": 345,
-      "spring_knots": 0.17
+      "bearing": 222,
+      "spring_knots": 0.0
     },
     {
       "mark": "X",
       "hw_offset": 0,
-      "bearing": 345,
-      "spring_knots": 0.294
+      "bearing": 222,
+      "spring_knots": 0.0
     },
     {
       "mark": "X",
       "hw_offset": 1,
-      "bearing": 345,
-      "spring_knots": 0.34
+      "bearing": 222,
+      "spring_knots": 0.0
     },
     {
       "mark": "X",
       "hw_offset": 2,
-      "bearing": 345,
-      "spring_knots": 0.294
+      "bearing": 222,
+      "spring_knots": 0.0
     },
     {
       "mark": "X",
       "hw_offset": 3,
-      "bearing": 345,
-      "spring_knots": 0.17
+      "bearing": 222,
+      "spring_knots": 0.0
     },
     {
       "mark": "X",
@@ -963,38 +1019,38 @@
     {
       "mark": "X",
       "hw_offset": 5,
-      "bearing": 195,
-      "spring_knots": 0.17
+      "bearing": 42,
+      "spring_knots": 0.0
     },
     {
       "mark": "X",
       "hw_offset": 6,
-      "bearing": 195,
-      "spring_knots": 0.294
+      "bearing": 42,
+      "spring_knots": 0.0
     },
     {
       "mark": "Y",
       "hw_offset": -6,
-      "bearing": 182,
-      "spring_knots": 0.779
+      "bearing": 349,
+      "spring_knots": 0.872
     },
     {
       "mark": "Y",
       "hw_offset": -5,
-      "bearing": 182,
-      "spring_knots": 0.9
+      "bearing": 349,
+      "spring_knots": 1.007
     },
     {
       "mark": "Y",
       "hw_offset": -4,
-      "bearing": 182,
-      "spring_knots": 0.779
+      "bearing": 349,
+      "spring_knots": 0.872
     },
     {
       "mark": "Y",
       "hw_offset": -3,
-      "bearing": 182,
-      "spring_knots": 0.45
+      "bearing": 349,
+      "spring_knots": 0.504
     },
     {
       "mark": "Y",
@@ -1005,32 +1061,32 @@
     {
       "mark": "Y",
       "hw_offset": -1,
-      "bearing": 2,
-      "spring_knots": 0.45
+      "bearing": 169,
+      "spring_knots": 0.504
     },
     {
       "mark": "Y",
       "hw_offset": 0,
-      "bearing": 2,
-      "spring_knots": 0.779
+      "bearing": 169,
+      "spring_knots": 0.872
     },
     {
       "mark": "Y",
       "hw_offset": 1,
-      "bearing": 2,
-      "spring_knots": 0.9
+      "bearing": 169,
+      "spring_knots": 1.007
     },
     {
       "mark": "Y",
       "hw_offset": 2,
-      "bearing": 2,
-      "spring_knots": 0.779
+      "bearing": 169,
+      "spring_knots": 0.872
     },
     {
       "mark": "Y",
       "hw_offset": 3,
-      "bearing": 2,
-      "spring_knots": 0.45
+      "bearing": 169,
+      "spring_knots": 0.504
     },
     {
       "mark": "Y",
@@ -1041,38 +1097,38 @@
     {
       "mark": "Y",
       "hw_offset": 5,
-      "bearing": 182,
-      "spring_knots": 0.45
+      "bearing": 349,
+      "spring_knots": 0.504
     },
     {
       "mark": "Y",
       "hw_offset": 6,
-      "bearing": 182,
-      "spring_knots": 0.779
+      "bearing": 349,
+      "spring_knots": 0.872
     },
     {
       "mark": "Z",
       "hw_offset": -6,
-      "bearing": 188,
-      "spring_knots": 0.416
+      "bearing": 45,
+      "spring_knots": 0.007
     },
     {
       "mark": "Z",
       "hw_offset": -5,
-      "bearing": 188,
-      "spring_knots": 0.48
+      "bearing": 45,
+      "spring_knots": 0.008
     },
     {
       "mark": "Z",
       "hw_offset": -4,
-      "bearing": 188,
-      "spring_knots": 0.416
+      "bearing": 45,
+      "spring_knots": 0.007
     },
     {
       "mark": "Z",
       "hw_offset": -3,
-      "bearing": 188,
-      "spring_knots": 0.24
+      "bearing": 45,
+      "spring_knots": 0.004
     },
     {
       "mark": "Z",
@@ -1083,32 +1139,32 @@
     {
       "mark": "Z",
       "hw_offset": -1,
-      "bearing": 352,
-      "spring_knots": 0.24
+      "bearing": 225,
+      "spring_knots": 0.004
     },
     {
       "mark": "Z",
       "hw_offset": 0,
-      "bearing": 352,
-      "spring_knots": 0.416
+      "bearing": 225,
+      "spring_knots": 0.007
     },
     {
       "mark": "Z",
       "hw_offset": 1,
-      "bearing": 352,
-      "spring_knots": 0.48
+      "bearing": 225,
+      "spring_knots": 0.008
     },
     {
       "mark": "Z",
       "hw_offset": 2,
-      "bearing": 352,
-      "spring_knots": 0.416
+      "bearing": 225,
+      "spring_knots": 0.007
     },
     {
       "mark": "Z",
       "hw_offset": 3,
-      "bearing": 352,
-      "spring_knots": 0.24
+      "bearing": 225,
+      "spring_knots": 0.004
     },
     {
       "mark": "Z",
@@ -1119,38 +1175,38 @@
     {
       "mark": "Z",
       "hw_offset": 5,
-      "bearing": 188,
-      "spring_knots": 0.24
+      "bearing": 45,
+      "spring_knots": 0.004
     },
     {
       "mark": "Z",
       "hw_offset": 6,
-      "bearing": 188,
-      "spring_knots": 0.416
+      "bearing": 45,
+      "spring_knots": 0.007
     },
     {
       "mark": "Em",
       "hw_offset": -6,
-      "bearing": 185,
-      "spring_knots": 0.823
+      "bearing": 349,
+      "spring_knots": 0.872
     },
     {
       "mark": "Em",
       "hw_offset": -5,
-      "bearing": 185,
-      "spring_knots": 0.95
+      "bearing": 349,
+      "spring_knots": 1.007
     },
     {
       "mark": "Em",
       "hw_offset": -4,
-      "bearing": 185,
-      "spring_knots": 0.823
+      "bearing": 349,
+      "spring_knots": 0.872
     },
     {
       "mark": "Em",
       "hw_offset": -3,
-      "bearing": 185,
-      "spring_knots": 0.475
+      "bearing": 349,
+      "spring_knots": 0.504
     },
     {
       "mark": "Em",
@@ -1161,32 +1217,32 @@
     {
       "mark": "Em",
       "hw_offset": -1,
-      "bearing": 5,
-      "spring_knots": 0.475
+      "bearing": 169,
+      "spring_knots": 0.504
     },
     {
       "mark": "Em",
       "hw_offset": 0,
-      "bearing": 5,
-      "spring_knots": 0.823
+      "bearing": 169,
+      "spring_knots": 0.872
     },
     {
       "mark": "Em",
       "hw_offset": 1,
-      "bearing": 5,
-      "spring_knots": 0.95
+      "bearing": 169,
+      "spring_knots": 1.007
     },
     {
       "mark": "Em",
       "hw_offset": 2,
-      "bearing": 5,
-      "spring_knots": 0.823
+      "bearing": 169,
+      "spring_knots": 0.872
     },
     {
       "mark": "Em",
       "hw_offset": 3,
-      "bearing": 5,
-      "spring_knots": 0.475
+      "bearing": 169,
+      "spring_knots": 0.504
     },
     {
       "mark": "Em",
@@ -1197,24 +1253,38 @@
     {
       "mark": "Em",
       "hw_offset": 5,
-      "bearing": 185,
-      "spring_knots": 0.475
+      "bearing": 349,
+      "spring_knots": 0.504
     },
     {
       "mark": "Em",
       "hw_offset": 6,
-      "bearing": 185,
-      "spring_knots": 0.823
+      "bearing": 349,
+      "spring_knots": 0.872
     }
   ],
   "model": {
-    "spring_range_m": 4.1,
-    "neap_range_m": 1.7,
-    "reference": "HW Torquay",
-    "slack_hours": [
-      -2,
-      4
-    ],
-    "note": "Experimental RTYC race-tactics current model; not for navigation."
+    "reference": "100% velocity = deep water outside the Berry Head\u2013Hope's Nose line",
+    "phase_pattern": {
+      "-6": 0.866,
+      "-5": 1.0,
+      "-4": 0.866,
+      "-3": 0.5,
+      "-2": 0.0,
+      "-1": 0.5,
+      "0": 0.866,
+      "1": 1.0,
+      "2": 0.866,
+      "3": 0.5,
+      "4": 0.0,
+      "5": 0.5,
+      "6": 0.866
+    },
+    "notes": [
+      "Relative current percentages are derived from the axis-aligned Tor Bay flow model.",
+      "Mark directions use the local model flood vector and the reversed ebb vector.",
+      "Displayed percentages are scaled for the day using local tidal range from the tide service.",
+      "Not for navigation."
+    ]
   }
 }

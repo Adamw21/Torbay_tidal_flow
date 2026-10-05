@@ -1,9 +1,23 @@
-RTYC Tor Bay Tidal Flow Viewer v0.3
+RTYC Tor Bay Tidal Flow Viewer — percentage velocity model
 
-Changes from v0.2:
-- Current arrows changed to red.
-- Arrow display length doubled (thickness unchanged).
-- R and G shoreline-alignment tweak:
-  - G bearings adjusted to 300° / 120°
-  - R bearings adjusted to 295° / 115°
-These are heuristic nearshore direction tweaks, not measured local current data.
+Files to upload to GitHub Pages:
+- index.html
+- data.json
+
+Model basis
+-----------
+This version uses the Tor Bay percentage velocity model.
+100% velocity is defined as the deep-water flow outside the Berry Head–Hope's Nose line.
+All RTYC mark vectors are derived from:
+- local percentage of the offshore reference flow
+- local modelled flood direction at the mark
+- reversed direction for ebb
+- hourly stage pattern relative to HW Torquay
+- daily scaling using the OpenWaters tide range lookup
+
+Display behaviour
+-----------------
+The website shows each mark's predicted current as a percentage of the offshore reference current.
+It also shows an equivalent value assuming the offshore reference current were 1.00 kt.
+
+Not for navigation.
