@@ -1,19 +1,15 @@
-RTYC Tor Bay Tidal Flow Viewer v0.7.3
+RTYC Tor Bay Tidal Flow Viewer v0.7.4
 
-Files to upload to GitHub Pages:
+Upload these to GitHub Pages:
 - index.html
-- data-v073.json
-- background-v073.png
+- data-v074.json
+- background-v074.png
 
-What this version does
-----------------------
-- uses the illustrated Torbay chart with depth contours as the website background
-- does not draw separate buoy arrows
-- retains the faint background arrows across the bay
-- clicking anywhere on the map gives a callout with local speed and direction
-- lets you set the offshore reference speed in knots so local speed can be shown in knots
+Key changes
+-----------
+- field registration updated using official RTYC mark lat/long values anchored to the illustrated chart image
+- uses a smooth warp so the bathymetry/velocity field aligns more closely to the background chart
+- faint arrows are now bolder and darker so they remain visible over the blue background
+- clicking anywhere shows local modelled direction and speed
 
-Notes
------
-100% means the deep-water reference flow outside the Berry Head–Hope's Nose line.
-This remains an experimental tactical model and is not for navigation.
+Not for navigation.
