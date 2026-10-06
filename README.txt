@@ -1,17 +1,19 @@
-RTYC Tor Bay Tidal Flow Viewer v0.7.2
+RTYC Tor Bay Tidal Flow Viewer v0.7.3
 
-Fixes:
-- Chart image is the master coordinate plane, removing the earlier vertical stretch.
-- RTYC marks are re-registered using Torquay Harbour, Paignton Harbour, Brixham Harbour, Hope's Nose and Berry Head as chart/geographic anchors.
-- Background arrows and buoy arrows use the same continuous direction field.
-- Interior flow uses the curved bay-flow solution; the deeper offshore area blends toward the Berry Head–Hope's Nose axis.
-- Existing percentage-velocity magnitudes are retained.
-- Clean bathymetry background with 5 m, 10 m, 15 m and 20 m contours.
-- Buoy and background arrows can be independently switched on/off.
-
-Upload:
+Files to upload to GitHub Pages:
 - index.html
-- data-v072.json
-- background-v072.png
+- data-v073.json
+- background-v073.png
 
-Not for navigation.
+What this version does
+----------------------
+- uses the illustrated Torbay chart with depth contours as the website background
+- does not draw separate buoy arrows
+- retains the faint background arrows across the bay
+- clicking anywhere on the map gives a callout with local speed and direction
+- lets you set the offshore reference speed in knots so local speed can be shown in knots
+
+Notes
+-----
+100% means the deep-water reference flow outside the Berry Head–Hope's Nose line.
+This remains an experimental tactical model and is not for navigation.
