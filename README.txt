@@ -1,15 +1,18 @@
-RTYC Tor Bay Tidal Flow Viewer v0.7.4
+RTYC Tor Bay Tidal Flow Viewer v0.8.0
 
-Upload these to GitHub Pages:
+Upload these files to GitHub Pages root:
 - index.html
-- data-v074.json
-- background-v074.png
+- data-v080.json
+- background-v080.png
 
-Key changes
------------
-- field registration updated using official RTYC mark lat/long values anchored to the illustrated chart image
-- uses a smooth warp so the bathymetry/velocity field aligns more closely to the background chart
-- faint arrows are now bolder and darker so they remain visible over the blue background
-- clicking anywhere shows local modelled direction and speed
+What changed
+------------
+- removed the warped/reconstructed field that was misaligned
+- replaced it with arrows extracted directly from the approved peak-flood chart
+- arrows are therefore already in the correct chart coordinates
+- ebb simply reverses the flood-direction arrows
+- clicking anywhere gives a locally interpolated speed and direction estimate
 
-Not for navigation.
+Notes
+-----
+This is still an experimental tactical model, not for navigation.
